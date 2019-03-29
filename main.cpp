@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <iostream>
 
 using namespace std;
@@ -9,45 +8,24 @@ using namespace std;
 #include "pizza.h"
 #include "extras.h"
 #include "pedido.h"
+#include "menu.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
 
-    Cliente c1;
-    Pizza pizza1;
-    Extras E1;
-    Pedido pe1;
+    Cliente cliente[10];
+    Pizza pizza[10];
+    Extras Extra[10];
+    Pedido pedido[10];
 
-    string nome, endereco,dataNasc;
-    int cpf,codigo,pontuacao;
-
-    cout<<"digite seu nome   ";
-    cin>>nome;
-    cout<<"digite seu ender   ";
-    cin>>endereco;
-    cout<<"digite seu data   ";
-    cin>>dataNasc;
-    cout<<"digite seu cpf   ";
-    cin>>cpf;
-    cout<<"digite seu codigoe   ";
-    cin>>codigo;
-    cout<<"digite seu potn   ";
-    cin>>pontuacao;
-
-    c1.constroi_cliente(nome,endereco,dataNasc,cpf,codigo,pontuacao);
-    c1.imprime_cliente();
+    MENU(cliente, pizza, Extra, pedido);
 
 
-    /*
-    c1.constroi_cliente("Jailson", "acre", "24 11 666", 42112, 666666, 2);
-    pizza1.constroi_pizza(1,2,2);
-    E1.constroi_extras("", "cebola");
 
-    pe1.constroi_pedido(c1,E1,2,2,421);
-    pe1.add_pizza(pizza1);
 
-    pe1.imprime_pedido();
-*/
-    return a.exec();
+
+
+
+
+    return 0;
 }

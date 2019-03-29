@@ -14,7 +14,7 @@ class Pedido
 private:
     Cliente cliente;
     Pizza pizza[10];
-    class Extras Extras;            // CADE O COMENTARIO PUTA
+    class Extras Extras;
     int pagamento;
     int entrega;
     int codigo;
