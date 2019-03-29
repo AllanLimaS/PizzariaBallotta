@@ -34,4 +34,5 @@ HEADERS += \
     funcionario.h \
     pedido.h \
     pizza.h \
-    extras.h
+    extras.h \
+    menu.h
