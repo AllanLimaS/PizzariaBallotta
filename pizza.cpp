@@ -11,22 +11,31 @@ Pizza::Pizza()
 void Pizza :: setBorda(int borda){
     this->borda = borda;
 }
+int Pizza :: getBorda(){
+    return this->borda;
+}
 
 void Pizza :: setSabor(int sabor){
     this->sabor = sabor;
+}
+int Pizza :: getSabor(){
+    return this->sabor;
 }
 
 void Pizza :: setTamanho(int tamanho){
     this->tamanho = tamanho;
 }
+int Pizza :: getTamanho(){
+    return this->tamanho;
+}
 
-void Pizza :: criaPizza(int sabor, int borda, int tamanho){
+void Pizza :: constroi_pizza(int sabor, int borda, int tamanho){
     this->borda = borda;
     this->sabor = sabor;
     this->tamanho = tamanho;
 }
 
-void Pizza :: printPizza(){
+void Pizza :: imprime_pizza(){
     string sabor;
     string tamanho;
     string borda;

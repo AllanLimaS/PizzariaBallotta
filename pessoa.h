@@ -17,15 +17,20 @@ private:
 
 public:
     void constroi_pessoa(string name, string endereco, string dataNasc, int cpf, int codigo);
+    void imprime_pessoa();
+
     void setName(string name);
-    void print_pessoa();
     string getName();
+
     void setEndereco(string endereco);
     string getEndereco();
+
     void setDataNasc(string dataNasc);
     string getDataNasc();
+
     void setCpf(int cpf);
     int getCpf();
+
     void setCodigo(int codigo);
     int getCodigo();
 };

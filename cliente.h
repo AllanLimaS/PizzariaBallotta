@@ -10,7 +10,10 @@ private:
 public:
     Cliente();
     void constroi_cliente(string name, string endereco, string dataNasc, int cpf, int codigo, int pontuacao);
-    void amostra_cliente();
+    void imprime_cliente();
+
+    int getPontuacao();
+    void setPontuacao(int value);
 };
 
 #endif // CLIENTE_H
