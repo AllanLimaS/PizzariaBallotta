@@ -85,7 +85,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *Extra, Pedido *pedido){
         cout<<"[0]ADD CLIENTE";
         gotoxy(30,10);
         cout<<"[1]ADD PEDIDO";
-        gotoxy(30,10);
+        gotoxy(30,12);
         cout<<"[2]VER CLIENTES";
 
         ch = getch();
