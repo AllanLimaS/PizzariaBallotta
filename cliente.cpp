@@ -2,12 +2,18 @@
 #include <iostream>
 using namespace std;
 
-
 Cliente::Cliente()
 {
-
 }
 
+int Cliente::getPontuacao()
+{
+    return pontuacao;
+}
+void Cliente::setPontuacao(int pontuacao)
+{
+    this->pontuacao = pontuacao;
+}
 
 void Cliente :: constroi_cliente(string name, string endereco, string dataNasc, int cpf, int codigo, int pontuacao){
 
@@ -15,8 +21,8 @@ void Cliente :: constroi_cliente(string name, string endereco, string dataNasc, 
     this->pontuacao = pontuacao;
 }
 
-void Cliente :: amostra_cliente(){
-    this->print_pessoa();
+void Cliente :: imprime_cliente(){
+    this->imprime_pessoa();
     cout<< "PONTUCAO: " << this->pontuacao << endl;
 }
 

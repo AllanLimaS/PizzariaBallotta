@@ -2,18 +2,24 @@
 #define EXTRAS_H
 
 #include<iostream>
+
 using namespace std;
 
 class Extras
 {
 private:
-    string bebida,adicionais;
+    string bebida;
+    string adicionais;
 
 public:
     Extras();
+    void constroi_extras(string bebida,string adicionais);
+    void imprime_extras();
+
     void setBebida(string bebida);
+    string getBebida();
     void setAdicionais(string adicionais);
-    void criaExtras(string bebida,string adicionais);
-    void printExtras();
+    string getAdicionais();
+
 };
 #endif // EXTRAS_H
