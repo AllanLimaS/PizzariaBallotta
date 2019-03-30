@@ -56,62 +56,12 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
 
 }
 
-int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
-    string name;
-    string endereco;
-    string dataNasc;
-    int cpf;
-    int codigo;
-    string funcao;
-    float salario;
-
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA O NOME: ";
-    cin>>name;
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA O ENDERECO: ";
-    cin>>endereco;
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA A DATA DE NASC: ";
-    cin>>dataNasc;
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA CPF: ";
-    cin>>cpf;
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA COD: ";
-    cin>>codigo;
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA FUNCAO: ";
-    cin>>funcao;
-
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA SALARIO: ";
-    cin>>salario;
-
-    funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
-    funcionario_posi++;
-    return funcionario_posi;
-
-}
-
 int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza,  Extras *extra ){
     int sabor;
     int borda;
     int tamanho;
     int i = 0;
+    int j = 0;
     int codigo;
     int bebida;
     int adicionais;
@@ -138,7 +88,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA PAGAMNETO";
+            cout<<"ESCOLHA pagamento(int): ";
             gotoxy(30,10);
             cout<<"1 - Cartao";
             gotoxy(30,12);
@@ -149,11 +99,11 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA ENTREGA";
+            cout<<"ESCOLHA ESCOLHA(int): ";
             gotoxy(30,10);
-            cout<<"1 - MotoBOI";
+            cout<<"1 - motoBOI";
             gotoxy(30,12);
-            cout<<"2 - Retirada no balcao";
+            cout<<"2 - retirada no balcao";
             cin>>entrega;
 
             clrscr();
@@ -193,63 +143,71 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             extra->constroi_extras(bebida,adicionais);
 
             pedido[pedido_posi].constroi_pedido(*cliente,*extra,pagamento,entrega,codigo);
+
             clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
             gotoxy(30,10);
-            cout<<"1 - Broto";
-            gotoxy(30, 12);
-            cout<<"2 - Media";
-            gotoxy(30,14);
-            cout<<"3 - Grande";
-            gotoxy(30, 16);
-            cout<<"Sua escolha: ";
-            cin>>tamanho;
+            cout<<"DIGITE A QUANTIDADE DE PIZZAS: ";
+            cin>>qntPizzas;
+            for(j=0;j<qntPizzas;j++){
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA A BORDA DA PIZZA: ";
-            gotoxy(30, 10);
-            cout<<"1 - Catupiry";
-            gotoxy(30, 12);
-            cout<<"2 - Cheddar";
-            gotoxy(30,14);
-            cout<<"3 - Chocolate";
-            gotoxy(30, 16);
-            cout <<"4 - Normal";
-            gotoxy(30, 18);
-            cout<<"Sua escolha: ";
-            cin>>borda;
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
+                gotoxy(30,10);
+                cout<<"1 - Broto";
+                gotoxy(30, 12);
+                cout<<"2 - Media";
+                gotoxy(30,14);
+                cout<<"3 - Grande";
+                gotoxy(30, 16);
+                cout<<"Sua escolha: ";
+                cin>>tamanho;
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA O SABOR DA PIZZA: ";
-            gotoxy(30, 10);
-            cout<<"1 - Calabresa";
-            gotoxy(30, 11);
-            cout<<"2 - Peito de peru";
-            gotoxy(30, 12);
-            cout<<"3 - Frango com catupiry";
-            gotoxy(30, 13);
-            cout<<"4 - Frango com batata doce";
-            gotoxy(30,14);
-            cout<<"5 - 4 Queijos";
-            gotoxy(30, 15);
-            cout<<"6 - Coracao";
-            gotoxy(30, 16);
-            cout<<"7 - Abacaxi";
-            gotoxy(30, 17);
-            cout<<"8 - Portuguesa";
-            gotoxy(30, 18);
-            cout<<"9 - Bacon";
-            gotoxy(30, 19);
-            cout<<"10 - Strogonof de carne";
-            gotoxy(30, 21);
-            cout<<"Sua escolha: ";
-            cin>>sabor;
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA A BORDA DA PIZZA: ";
+                gotoxy(30, 10);
+                cout<<"1 - Catupiry";
+                gotoxy(30, 12);
+                cout<<"2 - Cheddar";
+                gotoxy(30,14);
+                cout<<"3 - Chocolate";
+                gotoxy(30, 16);
+                cout <<"4 - Normal";
+                gotoxy(30, 18);
+                cout<<"Sua escolha: ";
+                cin>>borda;
 
-            pizza->constroi_pizza(sabor,borda,tamanho);
-            pedido[pedido_posi].add_pizza(*pizza);
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA O SABOR DA PIZZA: ";
+                gotoxy(30, 10);
+                cout<<"1 - Calabresa";
+                gotoxy(30, 11);
+                cout<<"2 - Peito de peru";
+                gotoxy(30, 12);
+                cout<<"3 - Frango com catupiry";
+                gotoxy(30, 13);
+                cout<<"4 - Frango com batata doce";
+                gotoxy(30,14);
+                cout<<"5 - 4 Queijos";
+                gotoxy(30, 15);
+                cout<<"6 - Coracao";
+                gotoxy(30, 16);
+                cout<<"7 - Abacaxi";
+                gotoxy(30, 17);
+                cout<<"8 - Portuguesa";
+                gotoxy(30, 18);
+                cout<<"9 - Bacon";
+                gotoxy(30, 19);
+                cout<<"10 - Strogonof de carne";
+                gotoxy(30, 21);
+                cout<<"Sua escolha: ";
+                cin>>sabor;
+
+                pizza[j].constroi_pizza(sabor,borda,tamanho);
+                pedido[pedido_posi].add_pizza(pizza[j]);
+            }
             clrscr();
             pedido[pedido_posi].imprime_pedido();
         }
@@ -271,22 +229,8 @@ void VER_CLIENTES(Cliente *cliente,int posicao){
 
 }
 
-void VER_FUNCIONARIOS(Funcionario *funcionario,int posicao){
-    int i = 0;
-
-    clrscr();
-    cout<<"\nFUNCIONARIOS CADASTRADOS: "<< posicao <<endl;
-
-    for(i=0;i < posicao;i++){
-        cout<<"\n\n";
-        funcionario[i].imprime_funcionario();
-    }
-    system("pause");
-
-}
-
-void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcionario *funcionario){
-    int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0, funcionario_posi = 0;// guarda a posicao do vetor
+void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
+    int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0;// guarda a posicao do vetor
     char ch;
     clrscr();
     system("mode con: cols=80 lines=40");
@@ -303,10 +247,6 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         }
         gotoxy(30,12);
         cout<<"[2]VER CLIENTES";
-        gotoxy(30, 14);
-        cout<<"[3]ADCIONAR FUNCIONARIO";
-        gotoxy(30, 16);
-        cout<<"[4]VER FUNCIONARIOS";
 
         ch = getch();
 
@@ -316,19 +256,12 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
             break;
         case '2':
             VER_CLIENTES(cliente,cliente_posi);
-            break;
 
         case '1':
             if (cliente_posi>0){
                 pedido_posi = ADD_PEDIDO(pedido_posi,cliente_posi,pedido,cliente,pizza,extra);
                 break;
             }
-        case '3':
-            funcionario_posi = ADD_FUNCIONARIO(funcionario_posi, funcionario);
-            break;
-        case '4':
-            VER_FUNCIONARIOS(funcionario, funcionario_posi);
-            break;
         case 27:
             exit(EXIT_SUCCESS);
         }

@@ -60,9 +60,14 @@ void Pedido :: constroi_pedido(Cliente cliente, class Extras extras, int pagamen
 }
 
 void Pedido :: imprime_pedido(){
+    int i = 0;
     cout<<"CLIENTE: " << this->cliente.getName()<<endl;
     this->Extras.imprime_extras();
-    this->pizza->imprime_pizza();
+    for(i=0;i<qtnPizzas;i++){
+        cout<<endl<<"PIZZA NUMERO:"<<i<<endl;
+        this->pizza[i].imprime_pizza();
+        cout<<endl;
+    }
     if(pagamento == 1){
         cout<<"PAGAMENTO: Cartao" <<endl;
     } else {
