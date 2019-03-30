@@ -87,7 +87,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA pagamento(int): ";
+            cout<<"ESCOLHA pagamento: ";
             gotoxy(30,10);
             cout<<"1 - Cartao";
             gotoxy(30,12);
@@ -98,7 +98,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA ESCOLHA(int): ";
+            cout<<"ESCOLHA entrega: ";
             gotoxy(30,10);
             cout<<"1 - motoBOI";
             gotoxy(30,12);
