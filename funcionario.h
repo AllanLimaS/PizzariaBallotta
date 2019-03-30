@@ -14,7 +14,7 @@ private:
 public:
     Funcionario();
     void constroi_funcionario(string nome, string endereco,string dataNasc,int cpf,int codigo,float salario,string funcao);
-    void imprime_funcionario();
+    void print_funcionario();
 
     void setSalario(float salario);
     float getSalario();
