@@ -20,12 +20,5 @@ int main(int argc, char *argv[])
 
     MENU(cliente, pizza, Extra, pedido);
 
-
-
-
-
-
-
-
     return 0;
 }

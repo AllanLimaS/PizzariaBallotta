@@ -64,7 +64,7 @@ void Pedido :: imprime_pedido(){
     cout<<"CLIENTE: " << this->cliente.getName()<<endl;
     this->Extras.imprime_extras();
     for(i=0;i<qtnPizzas;i++){
-        cout<<endl<<"PIZZA NUMERO:"<<i<<endl;
+        cout<<endl<<"PIZZA NUMERO:"<<i+1<<endl;
         this->pizza[i].imprime_pizza();
         cout<<endl;
     }
