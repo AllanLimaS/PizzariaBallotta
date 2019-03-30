@@ -53,9 +53,61 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
     cliente[cliente_posi].constroi_cliente(name,endereco,dataNasc,cpf,codigo,pontuacao);
     cliente_posi++;
     return cliente_posi;
+
 }
 
-int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza,  Extras *extra ){
+int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
+    string name;
+    string endereco;
+    string dataNasc;
+    int cpf;
+    int codigo;
+    string funcao;
+    float salario;
+
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA O NOME: ";
+    cin>>name;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA O ENDERECO: ";
+    cin>>endereco;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA A DATA DE NASC: ";
+    cin>>dataNasc;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA CPF: ";
+    cin>>cpf;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA COD: ";
+    cin>>codigo;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA FUNCAO: ";
+    cin>>funcao;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"INSIRA SALARIO: ";
+    cin>>salario;
+
+    funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
+    funcionario_posi++;
+    return funcionario_posi;
+
+}
+
+int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza, Extras *extra ){
     int sabor;
     int borda;
     int tamanho;
@@ -76,7 +128,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
         cout<<"nome: "<< cliente[i].getName()<< endl << "codigo: " << cliente[i].getCodigo()<< endl;
     }
 
-    cout<<"DIGITE O CODIGO DO PUTO QUE QUER COMER:  ";
+    cout<<"DIGITE O CODIGO DO PUTO QUE QUER COMER: ";
     cin>> codigo;
 
     for (i=0;i<posicao;i++){
@@ -207,7 +259,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
                 pizza[j].constroi_pizza(sabor,borda,tamanho);
                 pedido[pedido_posi].add_pizza(pizza[j]);
-            }
+        }
             clrscr();
             pedido[pedido_posi].imprime_pedido();
         }
@@ -226,12 +278,26 @@ void VER_CLIENTES(Cliente *cliente,int posicao){
         cliente[i].imprime_cliente();
     }
     system("pause");
+
 }
 
-void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
-    int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0;// guarda a posicao do vetor
-    char ch;
+void VER_FUNCIONARIOS(Funcionario *funcionario,int posicao){
+    int i = 0;
 
+    clrscr();
+    cout<<"\nFUNCIONARIOS CADASTRADOS: "<< posicao <<endl;
+
+    for(i=0;i < posicao;i++){
+        cout<<"\n\n";
+        funcionario[i].imprime_funcionario();
+    }
+    system("pause");
+
+}
+
+void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcionario *funcionario){
+    int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0, funcionario_posi = 0;// guarda a posicao do vetor
+    char ch;
     clrscr();
     system("mode con: cols=80 lines=40");
 
@@ -247,6 +313,10 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
         }
         gotoxy(30,12);
         cout<<"[2]VER CLIENTES";
+        gotoxy(30, 14);
+        cout<<"[3]ADCIONAR FUNCIONARIO";
+        gotoxy(30, 16);
+        cout<<"[4]VER FUNCIONARIOS";
 
         ch = getch();
 
@@ -254,18 +324,26 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
         case '0':
             cliente_posi = ADD_CLIENTE(cliente_posi,cliente);
             break;
-
         case '2':
             VER_CLIENTES(cliente,cliente_posi);
+            break;
 
         case '1':
             if (cliente_posi>0){
                 pedido_posi = ADD_PEDIDO(pedido_posi,cliente_posi,pedido,cliente,pizza,extra);
                 break;
             }
+        case '3':
+            funcionario_posi = ADD_FUNCIONARIO(funcionario_posi, funcionario);
+            break;
+        case '4':
+            VER_FUNCIONARIOS(funcionario, funcionario_posi);
+            break;
         case 27:
             exit(EXIT_SUCCESS);
         }
+
+
     }
 
 }
