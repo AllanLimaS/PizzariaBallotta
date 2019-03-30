@@ -75,13 +75,13 @@ void Pizza :: imprime_pizza(){
 
     switch (this->tamanho) {
     case 1:
-        tamanho = "pequena";
+        tamanho = "Broto";
         break;
     case 2:
-        tamanho = "media";
+        tamanho = "Media";
         break;
     case 3:
-        tamanho = "grande";
+        tamanho = "Grande";
         break;
     }
 
@@ -90,7 +90,13 @@ void Pizza :: imprime_pizza(){
         borda = "catupiry";
         break;
     case 2:
-        borda = "normal";
+        borda = "chedar";
+        break;
+    case 3:
+        borda = "Chocolate";
+        break;
+    case 4:
+        borda = "Normal";
         break;
     }
 

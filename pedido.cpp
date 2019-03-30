@@ -63,9 +63,17 @@ void Pedido :: imprime_pedido(){
     cout<<"CLIENTE: " << this->cliente.getName()<<endl;
     this->Extras.imprime_extras();
     this->pizza->imprime_pizza();
-    cout<<"PAGAMENTO: " << this->pagamento << endl;
-    cout<< "ENTREGA: " << this->entrega << endl;
-    cout<< "CODIGO: " << this->codigo<< endl;
+    if(pagamento == 1){
+        cout<<"PAGAMENTO: Cartao" <<endl;
+    } else {
+        cout<<"PAGAMENTO: Dinheiro" <<endl;
+    }
+    if(entrega == 1){
+        cout<<"ENTREGA: MOTOBOI" <<endl;
+    } else {
+        cout<<"ENTREGA: RETIRADA NO LOCAL" <<endl;
+    }
+    cout<<"CODIGO: " << this->codigo<< endl;
 
 }
 
