@@ -53,7 +53,6 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
     cliente[cliente_posi].constroi_cliente(name,endereco,dataNasc,cpf,codigo,pontuacao);
     cliente_posi++;
     return cliente_posi;
-
 }
 
 int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza,  Extras *extra ){
@@ -68,7 +67,6 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int pagamento;
     int entrega;
     int qntPizzas;
-
 
     clrscr();
     cout<<"\nQUANTOS CLIENTES QUE PODEM COMER: "<< posicao <<endl;
@@ -88,7 +86,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA pagamento(int): ";
+            cout<<"ESCOLHA PAGAMENTO: ";
             gotoxy(30,10);
             cout<<"1 - Cartao";
             gotoxy(30,12);
@@ -99,11 +97,13 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA ESCOLHA(int): ";
+            cout<<"ESCOLHA ENTREGA: ";
             gotoxy(30,10);
             cout<<"1 - motoBOI";
             gotoxy(30,12);
             cout<<"2 - retirada no balcao";
+            gotoxy(30, 14);
+            cout<<"Sua escolha: ";
             cin>>entrega;
 
             clrscr();
@@ -226,12 +226,12 @@ void VER_CLIENTES(Cliente *cliente,int posicao){
         cliente[i].imprime_cliente();
     }
     system("pause");
-
 }
 
 void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
     int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0;// guarda a posicao do vetor
     char ch;
+
     clrscr();
     system("mode con: cols=80 lines=40");
 
@@ -254,6 +254,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
         case '0':
             cliente_posi = ADD_CLIENTE(cliente_posi,cliente);
             break;
+
         case '2':
             VER_CLIENTES(cliente,cliente_posi);
 
@@ -265,8 +266,6 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido){
         case 27:
             exit(EXIT_SUCCESS);
         }
-
-
     }
 
 }
