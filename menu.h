@@ -61,6 +61,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int borda;
     int tamanho;
     int i = 0;
+    int j = 0;
     int codigo;
     int bebida;
     int adicionais;
@@ -87,7 +88,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA pagamento: ";
+            cout<<"ESCOLHA pagamento(int): ";
             gotoxy(30,10);
             cout<<"1 - Cartao";
             gotoxy(30,12);
@@ -98,7 +99,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             clrscr();
             gotoxy(30,8);
-            cout<<"ESCOLHA entrega: ";
+            cout<<"ESCOLHA ESCOLHA(int): ";
             gotoxy(30,10);
             cout<<"1 - motoBOI";
             gotoxy(30,12);
@@ -142,63 +143,71 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             extra->constroi_extras(bebida,adicionais);
 
             pedido[pedido_posi].constroi_pedido(*cliente,*extra,pagamento,entrega,codigo);
+
             clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
             gotoxy(30,10);
-            cout<<"1 - Broto";
-            gotoxy(30, 12);
-            cout<<"2 - Media";
-            gotoxy(30,14);
-            cout<<"3 - Grande";
-            gotoxy(30, 16);
-            cout<<"Sua escolha: ";
-            cin>>tamanho;
+            cout<<"DIGITE A QUANTIDADE DE PIZZAS: ";
+            cin>>qntPizzas;
+            for(j=0;j<qntPizzas;j++){
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA A BORDA DA PIZZA: ";
-            gotoxy(30, 10);
-            cout<<"1 - Catupiry";
-            gotoxy(30, 12);
-            cout<<"2 - Cheddar";
-            gotoxy(30,14);
-            cout<<"3 - Chocolate";
-            gotoxy(30, 16);
-            cout <<"4 - Normal";
-            gotoxy(30, 18);
-            cout<<"Sua escolha: ";
-            cin>>borda;
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
+                gotoxy(30,10);
+                cout<<"1 - Broto";
+                gotoxy(30, 12);
+                cout<<"2 - Media";
+                gotoxy(30,14);
+                cout<<"3 - Grande";
+                gotoxy(30, 16);
+                cout<<"Sua escolha: ";
+                cin>>tamanho;
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA O SABOR DA PIZZA: ";
-            gotoxy(30, 10);
-            cout<<"1 - Calabresa";
-            gotoxy(30, 11);
-            cout<<"2 - Peito de peru";
-            gotoxy(30, 12);
-            cout<<"3 - Frango com catupiry";
-            gotoxy(30, 13);
-            cout<<"4 - Frango com batata doce";
-            gotoxy(30,14);
-            cout<<"5 - 4 Queijos";
-            gotoxy(30, 15);
-            cout<<"6 - Coracao";
-            gotoxy(30, 16);
-            cout<<"7 - Abacaxi";
-            gotoxy(30, 17);
-            cout<<"8 - Portuguesa";
-            gotoxy(30, 18);
-            cout<<"9 - Bacon";
-            gotoxy(30, 19);
-            cout<<"10 - Strogonof de carne";
-            gotoxy(30, 21);
-            cout<<"Sua escolha: ";
-            cin>>sabor;
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA A BORDA DA PIZZA: ";
+                gotoxy(30, 10);
+                cout<<"1 - Catupiry";
+                gotoxy(30, 12);
+                cout<<"2 - Cheddar";
+                gotoxy(30,14);
+                cout<<"3 - Chocolate";
+                gotoxy(30, 16);
+                cout <<"4 - Normal";
+                gotoxy(30, 18);
+                cout<<"Sua escolha: ";
+                cin>>borda;
 
-            pizza->constroi_pizza(sabor,borda,tamanho);
-            pedido[pedido_posi].add_pizza(*pizza);
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA O SABOR DA PIZZA: ";
+                gotoxy(30, 10);
+                cout<<"1 - Calabresa";
+                gotoxy(30, 11);
+                cout<<"2 - Peito de peru";
+                gotoxy(30, 12);
+                cout<<"3 - Frango com catupiry";
+                gotoxy(30, 13);
+                cout<<"4 - Frango com batata doce";
+                gotoxy(30,14);
+                cout<<"5 - 4 Queijos";
+                gotoxy(30, 15);
+                cout<<"6 - Coracao";
+                gotoxy(30, 16);
+                cout<<"7 - Abacaxi";
+                gotoxy(30, 17);
+                cout<<"8 - Portuguesa";
+                gotoxy(30, 18);
+                cout<<"9 - Bacon";
+                gotoxy(30, 19);
+                cout<<"10 - Strogonof de carne";
+                gotoxy(30, 21);
+                cout<<"Sua escolha: ";
+                cin>>sabor;
+
+                pizza[j].constroi_pizza(sabor,borda,tamanho);
+                pedido[pedido_posi].add_pizza(pizza[j]);
+            }
             clrscr();
             pedido[pedido_posi].imprime_pedido();
         }
