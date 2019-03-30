@@ -17,8 +17,16 @@ int main(int argc, char *argv[])
     Pizza pizza[10];
     Extras Extra[10];
     Pedido pedido[10];
+    Funcionario funcionario[10];
 
-    MENU(cliente, pizza, Extra, pedido);
+    MENU(cliente, pizza, Extra, pedido, funcionario);
+
+
+
+
+
+
+
 
     return 0;
 }
