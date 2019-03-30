@@ -65,6 +65,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int bebida;
     int adicionais;
     int pagamento;
+    int entrega;
     int qntPizzas;
 
 
@@ -95,6 +96,14 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             cout<<"Sua escolha: ";
             cin>>pagamento;
 
+            clrscr();
+            gotoxy(30,8);
+            cout<<"ESCOLHA ESCOLHA(int): ";
+            gotoxy(30,10);
+            cout<<"1 - motoBOI";
+            gotoxy(30,12);
+            cout<<"2 - retirada no balcao";
+            cin>>entrega;
 
             clrscr();
             gotoxy(30,8);
@@ -132,7 +141,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
             extra->constroi_extras(bebida,adicionais);
 
-            pedido[pedido_posi].constroi_pedido(*cliente,*extra,pagamento,1,codigo);
+            pedido[pedido_posi].constroi_pedido(*cliente,*extra,pagamento,entrega,codigo);
             clrscr();
             gotoxy(30,8);
             cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
