@@ -9,7 +9,7 @@ private:
 
 public:
     Cliente();
-    void constroi_cliente(string name, string endereco, string dataNasc, int cpf, int codigo, int pontuacao);
+    void constroi_cliente(string name, string endereco, string dataNasc, string cpf, int codigo, int pontuacao);
     void imprime_cliente();
 
     int getPontuacao();
