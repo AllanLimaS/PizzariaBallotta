@@ -15,7 +15,7 @@ void Cliente::setPontuacao(int pontuacao)
     this->pontuacao = pontuacao;
 }
 
-void Cliente :: constroi_cliente(string name, string endereco, string dataNasc, int cpf, int codigo, int pontuacao){
+void Cliente :: constroi_cliente(string name, string endereco, string dataNasc, string cpf, int codigo, int pontuacao){
 
     this->constroi_pessoa(name,endereco,dataNasc,cpf,codigo);
     this->pontuacao = pontuacao;

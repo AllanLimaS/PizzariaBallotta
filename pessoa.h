@@ -12,11 +12,11 @@ private:
     string name;
     string endereco;
     string dataNasc;
-    int cpf;
+    string cpf;
     int codigo;
 
 public:
-    void constroi_pessoa(string name, string endereco, string dataNasc, int cpf, int codigo);
+    void constroi_pessoa(string name, string endereco, string dataNasc, string cpf, int codigo);
     void imprime_pessoa();
 
     void setName(string name);
@@ -28,8 +28,8 @@ public:
     void setDataNasc(string dataNasc);
     string getDataNasc();
 
-    void setCpf(int cpf);
-    int getCpf();
+    void setCpf(string cpf);
+    string getCpf();
 
     void setCodigo(int codigo);
     int getCodigo();

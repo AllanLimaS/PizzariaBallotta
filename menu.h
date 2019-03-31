@@ -16,7 +16,7 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
     string name;
     string endereco;
     string dataNasc;
-    int cpf;
+    string cpf;
     int codigo;
     int pontuacao;
 
@@ -60,7 +60,7 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     string name;
     string endereco;
     string dataNasc;
-    int cpf;
+    string cpf;
     int codigo;
     string funcao;
     float salario;
@@ -324,6 +324,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         case '0':
             cliente_posi = ADD_CLIENTE(cliente_posi,cliente);
             break;
+
         case '2':
             VER_CLIENTES(cliente,cliente_posi);
             break;
@@ -336,9 +337,11 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         case '3':
             funcionario_posi = ADD_FUNCIONARIO(funcionario_posi, funcionario);
             break;
+
         case '4':
             VER_FUNCIONARIOS(funcionario, funcionario_posi);
             break;
+
         case 27:
             exit(EXIT_SUCCESS);
         }

@@ -25,10 +25,10 @@ string pessoa::getDataNasc(){
     return this->dataNasc;
 }
 
-void pessoa::setCpf(int cpf){
+void pessoa::setCpf(string cpf){
     this->cpf = cpf;
 }
-int pessoa::getCpf(){
+string pessoa::getCpf(){
     return this->cpf;
 }
 
@@ -40,7 +40,7 @@ int pessoa::getCodigo(){
 }
 
 
-void pessoa :: constroi_pessoa(string name, string endereco, string dataNasc, int cpf, int codigo){
+void pessoa :: constroi_pessoa(string name, string endereco, string dataNasc, string cpf, int codigo){
     this->setName(name);
     this->setEndereco(endereco);
     this->setDataNasc(dataNasc);

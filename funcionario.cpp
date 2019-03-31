@@ -21,7 +21,7 @@ string Funcionario :: getFuncao(){
     return this->funcao;
 }
 
-void Funcionario::constroi_funcionario(string nome, string endereco,string dataNasc,int cpf,int codigo,float salario,string funcao){
+void Funcionario::constroi_funcionario(string nome, string endereco,string dataNasc,string cpf,int codigo,float salario,string funcao){
     this->constroi_pessoa(nome,endereco,dataNasc,cpf,codigo);
     this->setSalario(salario);
     this->setFuncao(funcao);
