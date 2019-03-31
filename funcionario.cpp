@@ -29,6 +29,6 @@ void Funcionario::constroi_funcionario(string nome, string endereco,string dataN
 
 void Funcionario :: imprime_funcionario(){
     this->imprime_pessoa();
-    cout<<"SALARIO: " << this->salario<<endl<<"FUNCAO: "<< this->funcao;
+    cout<<"SALARIO: " << this->salario<<endl<<"FUNCAO: "<< this->funcao<<endl;
 
 }
