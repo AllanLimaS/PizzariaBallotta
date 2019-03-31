@@ -56,6 +56,23 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
 
 }
 
+int ADD_CLIENTES_PADROES(int cliente_posi, Cliente *cliente){
+    cliente[cliente_posi].constroi_cliente("Allan a lima","Mario","19/06/2000","122.975.909-38",1,2424);
+    cliente_posi++;
+    cliente[cliente_posi].constroi_cliente("GuxXxtavo","BruxXxque","nasceu ontem inocente","777.777.777-77",2,6969);
+    cliente_posi++;
+    cliente[cliente_posi].constroi_cliente("Koguto","bC","200AC","987.654.321-00",3,0);
+    cliente_posi++;
+
+    clrscr();
+    gotoxy(30,8);
+    cout<<"COTOCOS ADICIONADOS COM SUCESSO"<<endl<<endl;
+    Sleep(1500);
+
+    return cliente_posi;
+
+}
+
 int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     string name;
     string endereco;
@@ -127,14 +144,15 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
         cout<<"\n\n";
         cout<<"nome: "<< cliente[i].getName()<< endl << "codigo: " << cliente[i].getCodigo()<< endl;
     }
-
+    gotoxy(30,8);
     cout<<"DIGITE O CODIGO DO PUTO QUE QUER COMER: ";
     cin>> codigo;
 
     for (i=0;i<posicao;i++){
         if (codigo == cliente[i].getCodigo()){
+            gotoxy(30,10);
             cout<<"puto selecionado"<<endl;
-            system("pause");
+            Sleep(1000);
 
             clrscr();
             gotoxy(30,8);
@@ -264,7 +282,9 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             pedido[pedido_posi].imprime_pedido();
         }
     }
+    pedido_posi++;
     system("pause");
+    return pedido_posi;
 }
 
 void VER_CLIENTES(Cliente *cliente,int posicao){
@@ -279,6 +299,19 @@ void VER_CLIENTES(Cliente *cliente,int posicao){
     }
     system("pause");
 
+}
+
+void VER_PEDIDOS(int pedido_posi,Pedido *pedido){
+    int i = 0;
+
+    clrscr();
+    cout<<"PEDIDOS FEITOS: "<<pedido_posi<<endl;
+
+    for(i=0;i < pedido_posi;i++){
+        cout<<endl<<"--------------------------PEDIDO "<<i + 1<<"--------------------------"<<endl;
+        pedido[i].imprime_pedido();
+    }
+    system("pause");
 }
 
 void VER_FUNCIONARIOS(Funcionario *funcionario,int posicao){
@@ -307,16 +340,18 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         cout<<"PIZZARIA MERDA";
         gotoxy(30,8);
         cout<<"[0]ADD CLIENTE";
-        if (cliente_posi >0){
-            gotoxy(30,10);
-            cout<<"[1]ADD PEDIDO";
-        }
+        gotoxy(30,10);
+        cout<<"[1]ADD PEDIDO";
         gotoxy(30,12);
         cout<<"[2]VER CLIENTES";
         gotoxy(30, 14);
         cout<<"[3]ADCIONAR FUNCIONARIO";
         gotoxy(30, 16);
         cout<<"[4]VER FUNCIONARIOS";
+        gotoxy(30, 18);
+        cout<<"[5]ADICIONA CLIENTES PADROES(PARA TESTES)";
+        gotoxy(30,20);
+        cout<<"[6]VER PEDIDOS";
 
         ch = getch();
 
@@ -332,14 +367,28 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         case '1':
             if (cliente_posi>0){
                 pedido_posi = ADD_PEDIDO(pedido_posi,cliente_posi,pedido,cliente,pizza,extra);
-                break;
+            }else{
+                clrscr();
+                gotoxy(30,8);
+                cout<<"PRIMEIRO CADASTRA UM CLIENTE NEH";
+                Sleep(1250);
             }
+            break;
+
         case '3':
             funcionario_posi = ADD_FUNCIONARIO(funcionario_posi, funcionario);
             break;
 
         case '4':
             VER_FUNCIONARIOS(funcionario, funcionario_posi);
+            break;
+
+        case '5':
+            cliente_posi = ADD_CLIENTES_PADROES(cliente_posi,cliente);
+            break;
+
+        case '6':
+            VER_PEDIDOS(pedido_posi,pedido);
             break;
 
         case 27:

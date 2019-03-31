@@ -78,7 +78,7 @@ void Pedido :: imprime_pedido(){
     } else {
         cout<<"ENTREGA: RETIRADA NO LOCAL" <<endl;
     }
-    cout<<"CODIGO: " << this->codigo<< endl;
+    cout<<"CODIGO DO CLIENTE: " << this->codigo<< endl;
 
 }
 
