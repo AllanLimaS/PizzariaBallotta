@@ -10,6 +10,7 @@ private:
     int tamanho;
 
 public:
+
     Pizza();
     void constroi_pizza(int sabor, int borda, int tamanho);
     void imprime_pizza();

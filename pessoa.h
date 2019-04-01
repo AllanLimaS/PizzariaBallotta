@@ -1,6 +1,5 @@
 #ifndef PESSOA_H
 #define PESSOA_H
-
 #include <iostream>
 
 using namespace std;
@@ -9,6 +8,7 @@ class pessoa
 {
 
 private:
+
     string name;
     string endereco;
     string dataNasc;
@@ -16,6 +16,7 @@ private:
     int codigo;
 
 public:
+
     void constroi_pessoa(string name, string endereco, string dataNasc, string cpf, int codigo);
     void imprime_pessoa();
 

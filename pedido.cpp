@@ -1,9 +1,7 @@
 #include "pedido.h"
-#include"cliente.h"
+#include "cliente.h"
 #include "pizza.h"
 #include "extras.h"
-
-
 
 Pedido::Pedido()
 {
@@ -51,10 +49,10 @@ void Pedido :: add_pizza(Pizza pizza){
     this->qtnPizzas = this->qtnPizzas + 1;          // poem pizza no vetor de pizza e prepara pra proxima
 }
 
-void Pedido :: constroi_pedido(Cliente cliente, class Extras extras, int pagamento, int entrega, int codigo){
+void Pedido :: constroi_pedido(Cliente cliente, Extras extras, int pagamento, int entrega, int codigo){
     this->qtnPizzas = 0;                            //funcao cria o pedido e diz q ainda n pediu pizza, só iniciou o pedido
     this->cliente = cliente;                        //dps disso a funcao addPizza coloca as pizza no vetor
-    this->Extras = extras;
+    this->extras = extras;
     this->pagamento = pagamento;
     this->entrega = entrega;
     this->codigo = codigo;
@@ -62,10 +60,9 @@ void Pedido :: constroi_pedido(Cliente cliente, class Extras extras, int pagamen
 
 void Pedido :: imprime_pedido(){
     int i = 0;
-    int ch;
 
     cout<<"CLIENTE: " << this->cliente.getName()<<endl;
-    this->Extras.imprime_extras();
+    this->extras.imprime_extras();
 
     if(pagamento == 1){
         cout<<"\n";
@@ -84,7 +81,6 @@ void Pedido :: imprime_pedido(){
         //gotoxy(25, 20);
         cout<<endl<<"PIZZA NUMERO:"<<i+1<<endl;
         this->pizza[i].imprime_pizza();
-        system("pause");
 
     }
 
