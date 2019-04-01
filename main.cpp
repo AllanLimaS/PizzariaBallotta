@@ -1,7 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
 #include "pessoa.h"
 #include "cliente.h"
 #include "funcionario.h"

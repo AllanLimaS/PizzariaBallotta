@@ -4,6 +4,7 @@
 #include "extras.h"
 
 
+
 Pedido::Pedido()
 {
 
@@ -61,14 +62,13 @@ void Pedido :: constroi_pedido(Cliente cliente, class Extras extras, int pagamen
 
 void Pedido :: imprime_pedido(){
     int i = 0;
+    int ch;
+
     cout<<"CLIENTE: " << this->cliente.getName()<<endl;
     this->Extras.imprime_extras();
-    for(i=0;i<qtnPizzas;i++){
-        cout<<endl<<"PIZZA NUMERO:"<<i+1<<endl;
-        this->pizza[i].imprime_pizza();
-        cout<<endl;
-    }
+
     if(pagamento == 1){
+        cout<<"\n";
         cout<<"PAGAMENTO: Cartao" <<endl;
     } else {
         cout<<"PAGAMENTO: Dinheiro" <<endl;
@@ -79,6 +79,14 @@ void Pedido :: imprime_pedido(){
         cout<<"ENTREGA: RETIRADA NO LOCAL" <<endl;
     }
     cout<<"CODIGO DO CLIENTE: " << this->codigo<< endl;
+
+    for(i=0;i<qtnPizzas;i++){
+        //gotoxy(25, 20);
+        cout<<endl<<"PIZZA NUMERO:"<<i+1<<endl;
+        this->pizza[i].imprime_pizza();
+        system("pause");
+
+    }
 
 }
 

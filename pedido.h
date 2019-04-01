@@ -5,6 +5,8 @@
 #include "cliente.h"
 #include "pizza.h"
 #include "extras.h"
+#include <windows.h>
+
 
 using namespace std;
 
