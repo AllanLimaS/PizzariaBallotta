@@ -1,9 +1,11 @@
 #ifndef MENU_H
 #define MENU_H
-#include "codefun.h"
 #include <windows.h>
 #include <iostream>
+#include "codefun.h"
+
 using namespace std;
+
 #include "pessoa.h"
 #include "cliente.h"
 #include "funcionario.h"
@@ -180,16 +182,18 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             gotoxy(30,8);
             cout<<"ESCOLHA ADICIONAIS";
             gotoxy(30, 10);
-            cout<<"1 - Cebola";
+            cout<<"0 - Nada";
             gotoxy(30, 11);
-            cout<<"2 - Bacon";
+            cout<<"1 - Cebola";
             gotoxy(30, 12);
-            cout<<"3 - Condimentos Extra";
+            cout<<"2 - Bacon";
             gotoxy(30, 13);
-            cout<<"4 - Azeitonas";
+            cout<<"3 - Condimentos Extra";
             gotoxy(30, 14);
+            cout<<"4 - Azeitonas";
+            gotoxy(30, 15);
             cout<<"5 - Queijo";
-            gotoxy(30, 16);
+            gotoxy(30, 17);
             cout<<"Sua escolha: ";
             cin>>adicionais;
 
@@ -197,22 +201,24 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             gotoxy(30,8);
             cout<<"ESCOLHA A BEBIDA";
             gotoxy(30, 10);
-            cout<<"1 - Skol";
+            cout<<"0 - Nada";
             gotoxy(30, 11);
-            cout<<"2 - Coca Cola";
+            cout<<"1 - Skol";
             gotoxy(30, 12);
-            cout<<"3 - Cachaca";
+            cout<<"2 - Coca Cola";
             gotoxy(30, 13);
-            cout<<"4 - Vodka";
+            cout<<"3 - Cachaca";
             gotoxy(30, 14);
+            cout<<"4 - Vodka";
+            gotoxy(30, 15);
             cout<<"5 - Suquinho";
-            gotoxy(30, 16);
+            gotoxy(30, 17);
             cout<<"Sua escolha: ";
             cin>>bebida;
 
             extra->constroi_extras(bebida,adicionais);
 
-            pedido[pedido_posi].constroi_pedido(*cliente,*extra,pagamento,entrega,codigo);
+            pedido[pedido_posi].constroi_pedido(cliente[i],*extra,pagamento,entrega,codigo);
 
             clrscr();
             gotoxy(30,10);

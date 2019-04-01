@@ -33,6 +33,10 @@ void Extras :: imprime_extras(){
 
     switch(this->bebida){
 
+    case 00:
+        bebida = "Nada";
+    break;
+
     case 01:
         bebida = "Skol";
     break;
@@ -56,6 +60,11 @@ void Extras :: imprime_extras(){
     }
 
     switch(this->adicionais){
+
+    case 00:
+        adicionais = "Nada";
+    break;
+
     case 01:
         adicionais = "Cebola";
     break;
