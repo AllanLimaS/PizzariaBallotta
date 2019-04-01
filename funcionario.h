@@ -8,10 +8,12 @@ using namespace std;
 class Funcionario:public pessoa
 {
 private:
+
     float salario;
     string funcao;
 
 public:
+
     Funcionario();
     void constroi_funcionario(string nome, string endereco,string dataNasc,string cpf,int codigo,float salario,string funcao);
     void imprime_funcionario();

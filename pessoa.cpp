@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 void pessoa::setName(string name){
     this->name = name;
 }
