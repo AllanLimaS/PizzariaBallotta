@@ -2,6 +2,7 @@
 #include "cliente.h"
 #include "pizza.h"
 #include "extras.h"
+#include <conio.h>
 
 Pedido::Pedido()
 {
@@ -35,6 +36,16 @@ void Pedido::setCodigo(int codigo)
     this->codigo = codigo;
 }
 
+int Pedido :: getQtnExtras(){
+    return this->qtnExtras;
+}
+
+
+void Pedido :: setQtnExtras(int qtnExtras){
+    this->qtnExtras = qtnExtras;
+}
+
+
 int Pedido::getQtnPizzas()
 {
     return this->qtnPizzas;
@@ -49,26 +60,37 @@ void Pedido :: add_pizza(Pizza pizza){
     this->qtnPizzas = this->qtnPizzas + 1;          // poem pizza no vetor de pizza e prepara pra proxima
 }
 
-void Pedido :: constroi_pedido(Cliente cliente, Extras extras, int pagamento, int entrega, int codigo){
+void Pedido :: constroi_pedido(Cliente cliente, int pagamento, int entrega, int codigo){
     this->qtnPizzas = 0;                            //funcao cria o pedido e diz q ainda n pediu pizza, só iniciou o pedido
     this->cliente = cliente;                        //dps disso a funcao addPizza coloca as pizza no vetor
-    this->extras = extras;
     this->pagamento = pagamento;
     this->entrega = entrega;
     this->codigo = codigo;
 }
 
+
+void Pedido :: putExtras(Extras extra, int qtnExtras){
+    this->extras[qtnExtras] = extra;
+}
+
+
 void Pedido :: imprime_pedido(){
     int i = 0;
+    int j = 0;
 
-    cout<<"CLIENTE: " << this->cliente.getName()<<endl;
-    this->extras.imprime_extras();
+
+     cout<<"CLIENTE: " << this->cliente.getName()<<endl;
+     cout<<"\n";
+    for(j=0 ;j <= this->qtnExtras ; j++){
+        this->extras[j].imprime_extras();
+        cout<<"\n";
+    }
 
     if(pagamento == 1){
-        cout<<"\n";
-        cout<<"PAGAMENTO: Cartao" <<endl;
+
+        cout<<"\nPAGAMENTO: Cartao" << endl;
     } else {
-        cout<<"PAGAMENTO: Dinheiro" <<endl;
+        cout<<"\nPAGAMENTO: Dinheiro" <<endl;
     }
     if(entrega == 1){
         cout<<"ENTREGA: MOTOBOI" <<endl;

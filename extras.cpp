@@ -88,6 +88,12 @@ void Extras :: imprime_extras(){
 
     }
 
-    cout<<"BEBIDA: "<< bebida <<endl;
-    cout<<"ADICIONAIS: "<< adicionais <<endl;
+    if(bebida != "Nada"){
+        cout<<"BEBIDA: "<< bebida << "   ";
+    }
+    if(adicionais != "Nada"){
+        cout<<"ADICIONAIS: "<< adicionais;
+    }
+
+
 }

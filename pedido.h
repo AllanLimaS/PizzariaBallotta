@@ -15,16 +15,17 @@ private:
 
     Cliente cliente;
     Pizza pizza[10];
-    Extras extras;
+    Extras extras[10];
     int pagamento;
     int entrega;
     int codigo;
     int qtnPizzas;                  //aqui add 1 cada vez q add uma pizza, pra saber a posicao no vetor
+    int qtnExtras;
 
 public:
 
     Pedido();
-    void constroi_pedido(Cliente cliente,Extras extras,int pagamento,int entrega, int codigo);
+    void constroi_pedido(Cliente cliente,int pagamento,int entrega, int codigo);
     void add_pizza(Pizza pizza);
     void imprime_pedido();
 
@@ -36,6 +37,9 @@ public:
     void setCodigo(int codigo);
     int getQtnPizzas();
     void setQtnPizzas(int qtnPizzas);
+    void putExtras(Extras extra, int qtnExtras);
+    void setQtnExtras(int qtnExtras);
+    int getQtnExtras();
 };
 
 #endif // PEDIDO_H
