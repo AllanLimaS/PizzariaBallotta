@@ -121,6 +121,10 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int pagamento;
     int entrega;
     int qntPizzas;
+    int posiExtras;
+    Extras extra_temp;
+    bool fazerExtras;
+    char ch;
 
     clrscr();
     cout<<"\nQUANTOS CLIENTES QUE PODEM COMER: "<< posicao <<endl;
@@ -161,47 +165,70 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             cout<<"Sua escolha: ";
             cin>>entrega;
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA ADICIONAIS";
-            gotoxy(30, 10);
-            cout<<"0 - Nada";
-            gotoxy(30, 11);
-            cout<<"1 - Cebola";
-            gotoxy(30, 12);
-            cout<<"2 - Bacon";
-            gotoxy(30, 13);
-            cout<<"3 - Condimentos Extra";
-            gotoxy(30, 14);
-            cout<<"4 - Azeitonas";
-            gotoxy(30, 15);
-            cout<<"5 - Queijo";
-            gotoxy(30, 17);
-            cout<<"Sua escolha: ";
-            cin>>adicionais;
+            fazerExtras = TRUE;
+            posiExtras = 0;
+            while(fazerExtras == TRUE){
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA A BEBIDA";
-            gotoxy(30, 10);
-            cout<<"0 - Nada";
-            gotoxy(30, 11);
-            cout<<"1 - Skol";
-            gotoxy(30, 12);
-            cout<<"2 - Coca Cola";
-            gotoxy(30, 13);
-            cout<<"3 - Cachaca";
-            gotoxy(30, 14);
-            cout<<"4 - Vodka";
-            gotoxy(30, 15);
-            cout<<"5 - Suquinho";
-            gotoxy(30, 17);
-            cout<<"Sua escolha: ";
-            cin>>bebida;
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA ADICIONAIS";
+                gotoxy(30, 10);
+                cout<<"0 - Nada";
+                gotoxy(30, 11);
+                cout<<"1 - Cebola";
+                gotoxy(30, 12);
+                cout<<"2 - Bacon";
+                gotoxy(30, 13);
+                cout<<"3 - Condimentos Extra";
+                gotoxy(30, 14);
+                cout<<"4 - Azeitonas";
+                gotoxy(30, 15);
+                cout<<"5 - Queijo";
+                gotoxy(30, 17);
+                cout<<"Sua escolha: ";
+                cin>>adicionais;
 
-            extra->constroi_extras(bebida,adicionais);
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA A BEBIDA";
+                gotoxy(30, 10);
+                cout<<"0 - Nada";
+                gotoxy(30, 11);
+                cout<<"1 - Skol";
+                gotoxy(30, 12);
+                cout<<"2 - Coca Cola";
+                gotoxy(30, 13);
+                cout<<"3 - Cachaca";
+                gotoxy(30, 14);
+                cout<<"4 - Vodka";
+                gotoxy(30, 15);
+                cout<<"5 - Suquinho";
+                gotoxy(30, 17);
+                cout<<"Sua escolha: ";
+                cin>>bebida;
 
-            pedido[pedido_posi].constroi_pedido(cliente[i],*extra,pagamento,entrega,codigo);
+                extra_temp.constroi_extras(bebida,adicionais);
+                pedido->putExtras(extra_temp,posiExtras);
+                pedido->setQtnExtras(posiExtras);
+                posiExtras ++;
+
+                clrscr();
+                gotoxy(30, 13);
+                cout<<"ADICIONAR MAIS EXTRAS?  [y]sim  [n]nao";
+                ch = 00;
+                ch = getch();
+                switch (ch) {
+                case 'y':
+
+                    break;
+                case 'n':
+                    fazerExtras = FALSE;
+                    break;
+                }
+
+
+            }
+            pedido[pedido_posi].constroi_pedido(cliente[i],pagamento,entrega,codigo);
 
             clrscr();
             gotoxy(30,10);
