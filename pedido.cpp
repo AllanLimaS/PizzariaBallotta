@@ -2,7 +2,7 @@
 #include "cliente.h"
 #include "pizza.h"
 #include "extras.h"
-#include <conio.h>
+
 
 Pedido::Pedido()
 {
