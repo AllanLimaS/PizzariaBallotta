@@ -115,6 +115,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int tamanho;
     int i = 0;
     int j = 0;
+    int cond = 0; // USUARIO IDIOTA
     int codigo;
     int bebida;
     int adicionais;
@@ -131,7 +132,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
     for (i=0;i<posicao;i++){
         cout<<"\n\n";
-        cout<<"nome: "<< cliente[i].getName()<< endl << "codigo: " << cliente[i].getCodigo()<< endl;
+        cout<<"Nome: "<< cliente[i].getName()<< endl << "Codigo: " << cliente[i].getCodigo()<< endl;
     }
     gotoxy(30,8);
     cout<<"DIGITE O CODIGO DO PUTO QUE QUER COMER: ";
@@ -139,73 +140,128 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
     for (i=0;i<posicao;i++){
         if (codigo == cliente[i].getCodigo()){
+            clrscr();
             gotoxy(30,10);
-            cout<<"puto selecionado"<<endl;
+            cout<<"PUTO SELECIONADO"<<endl;
+            gotoxy(30, 15);
+            cout<<"Nome: "<< cliente[i].getName();
+            gotoxy(30, 16);
+            cout<<"Codigo: " << cliente[i].getCodigo();
+
             Sleep(1000);
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA PAGAMENTO: ";
-            gotoxy(30,10);
-            cout<<"1 - Cartao";
-            gotoxy(30,12);
-            cout<<"2 - Dinheiro";
-            gotoxy(30, 14);
-            cout<<"Sua escolha: ";
-            cin>>pagamento;
+            while(cond == 0){
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA PAGAMENTO: ";
+                gotoxy(30,10);
+                cout<<"1 - Cartao";
+                gotoxy(30,12);
+                cout<<"2 - Dinheiro";
+                gotoxy(30, 14);
+                cout<<"Sua escolha: ";
+                cin>>pagamento;
+                if(pagamento != 1 && pagamento != 2){
+                    clrscr();
+                    gotoxy(25, 40);
+                    cout << "O BURRO DO KRL SABE LER N";
+                    Sleep(1000);
+                } else {
+                    cond = 1;
+                }
+            }
 
-            clrscr();
-            gotoxy(30,8);
-            cout<<"ESCOLHA ENTREGA: ";
-            gotoxy(30,10);
-            cout<<"1 - motoBOI";
-            gotoxy(30,12);
-            cout<<"2 - retirada no balcao";
-            gotoxy(30, 14);
-            cout<<"Sua escolha: ";
-            cin>>entrega;
+            cond = 0; // REDEFINE COND PARA OS WHILE FICAR BUNITO
+
+            while(cond == 0){
+                clrscr();
+                gotoxy(30,8);
+                cout<<"ESCOLHA ENTREGA: ";
+                gotoxy(30,10);
+                cout<<"1 - motoBOI";
+                gotoxy(30,12);
+                cout<<"2 - retirada no balcao";
+                gotoxy(30, 14);
+                cout<<"Sua escolha: ";
+                cin>>entrega;
+                if(entrega != 1 && pagamento != 2){
+                    clrscr();
+                    gotoxy(25, 20);
+                    cout << "O BURRO DO KRL SABE LER N";
+                    Sleep(1000);
+                } else {
+                    cond = 1;
+                }
+            }
+
+            cond = 0; // REDEFINE COND PARA OS WHILE FICAR BUNITO
+
 
             fazerExtras = TRUE;
             posiExtras = 0;
             while(fazerExtras == TRUE){
 
-                clrscr();
-                gotoxy(30,8);
-                cout<<"ESCOLHA ADICIONAIS";
-                gotoxy(30, 10);
-                cout<<"0 - Nada";
-                gotoxy(30, 11);
-                cout<<"1 - Cebola";
-                gotoxy(30, 12);
-                cout<<"2 - Bacon";
-                gotoxy(30, 13);
-                cout<<"3 - Condimentos Extra";
-                gotoxy(30, 14);
-                cout<<"4 - Azeitonas";
-                gotoxy(30, 15);
-                cout<<"5 - Queijo";
-                gotoxy(30, 17);
-                cout<<"Sua escolha: ";
-                cin>>adicionais;
+                while(cond == 0){
+                    clrscr();
+                    gotoxy(30,8);
+                    cout<<"ESCOLHA ADICIONAIS";
+                    gotoxy(30, 10);
+                    cout<<"0 - Nada";
+                    gotoxy(30, 11);
+                    cout<<"1 - Cebola";
+                    gotoxy(30, 12);
+                    cout<<"2 - Bacon";
+                    gotoxy(30, 13);
+                    cout<<"3 - Condimentos Extra";
+                    gotoxy(30, 14);
+                    cout<<"4 - Azeitonas";
+                    gotoxy(30, 15);
+                    cout<<"5 - Queijo";
+                    gotoxy(30, 17);
+                    cout<<"Sua escolha: ";
+                    cin>>adicionais;
+                    if(adicionais <0 or adicionais >5){
+                        clrscr();
+                        gotoxy(25, 20);
+                        cout << "O BURRO DO KRL SABE LER N";
+                        Sleep(1000);
+                    } else {
+                        cond = 1;
+                    }
+                }
 
-                clrscr();
-                gotoxy(30,8);
-                cout<<"ESCOLHA A BEBIDA";
-                gotoxy(30, 10);
-                cout<<"0 - Nada";
-                gotoxy(30, 11);
-                cout<<"1 - Skol";
-                gotoxy(30, 12);
-                cout<<"2 - Coca Cola";
-                gotoxy(30, 13);
-                cout<<"3 - Cachaca";
-                gotoxy(30, 14);
-                cout<<"4 - Vodka";
-                gotoxy(30, 15);
-                cout<<"5 - Suquinho";
-                gotoxy(30, 17);
-                cout<<"Sua escolha: ";
-                cin>>bebida;
+                cond = 0;
+
+                while(cond == 0){
+                    clrscr();
+                    gotoxy(30,8);
+                    cout<<"ESCOLHA A BEBIDA";
+                    gotoxy(30, 10);
+                    cout<<"0 - Nada";
+                    gotoxy(30, 11);
+                    cout<<"1 - Skol";
+                    gotoxy(30, 12);
+                    cout<<"2 - Coca Cola";
+                    gotoxy(30, 13);
+                    cout<<"3 - Cachaca";
+                    gotoxy(30, 14);
+                    cout<<"4 - Vodka";
+                    gotoxy(30, 15);
+                    cout<<"5 - Suquinho";
+                    gotoxy(30, 17);
+                    cout<<"Sua escolha: ";
+                    cin>>bebida;
+                    if(bebida <0 or bebida >5){
+                        clrscr();
+                        gotoxy(25, 20);
+                        cout << "O BURRO DO KRL SABE LER N";
+                        Sleep(1000);
+                    } else {
+                        cond = 1;
+                    }
+                }
+
+                cond = 0;
 
                 extra_temp.constroi_extras(bebida,adicionais);
                 pedido->putExtras(extra_temp,posiExtras);
@@ -213,7 +269,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 posiExtras ++;
 
                 clrscr();
-                gotoxy(30, 13);
+                gotoxy(20, 13);
                 cout<<"ADICIONAR MAIS EXTRAS?  [y]sim  [n]nao";
                 ch = 00;
                 ch = getch();
@@ -231,66 +287,101 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             pedido[pedido_posi].constroi_pedido(cliente[i],pagamento,entrega,codigo);
 
             clrscr();
-            gotoxy(30,10);
+            gotoxy(25,10);
             cout<<"DIGITE A QUANTIDADE DE PIZZAS: ";
             cin>>qntPizzas;
             for(j=0;j<qntPizzas;j++){
 
-                clrscr();
-                gotoxy(30,8);
-                cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
-                gotoxy(30,10);
-                cout<<"1 - Broto";
-                gotoxy(30, 12);
-                cout<<"2 - Media";
-                gotoxy(30,14);
-                cout<<"3 - Grande";
-                gotoxy(30, 16);
-                cout<<"Sua escolha: ";
-                cin>>tamanho;
+                while(cond == 0){
+                    clrscr();
+                    gotoxy(30,8);
+                    cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
+                    gotoxy(30,10);
+                    cout<<"1 - Broto";
+                    gotoxy(30, 12);
+                    cout<<"2 - Media";
+                    gotoxy(30,14);
+                    cout<<"3 - Grande";
+                    gotoxy(30, 16);
+                    cout<<"Sua escolha: ";
+                    cin>>tamanho;
+                    if(tamanho < 1 or tamanho > 3){
+                        clrscr();
+                        gotoxy(25, 20);
+                        cout << "O BURRO DO KRL SABE LER N";
+                        Sleep(1000);
+                    } else {
+                        cond = 1;
+                    }
+                }
 
-                clrscr();
-                gotoxy(30,8);
-                cout<<"ESCOLHA A BORDA DA PIZZA: ";
-                gotoxy(30, 10);
-                cout<<"1 - Catupiry";
-                gotoxy(30, 12);
-                cout<<"2 - Cheddar";
-                gotoxy(30,14);
-                cout<<"3 - Chocolate";
-                gotoxy(30, 16);
-                cout <<"4 - Normal";
-                gotoxy(30, 18);
-                cout<<"Sua escolha: ";
-                cin>>borda;
+                cond = 0;
 
-                clrscr();
-                gotoxy(30,8);
-                cout<<"ESCOLHA O SABOR DA PIZZA: ";
-                gotoxy(30, 10);
-                cout<<"1 - Calabresa";
-                gotoxy(30, 11);
-                cout<<"2 - Peito de peru";
-                gotoxy(30, 12);
-                cout<<"3 - Frango com catupiry";
-                gotoxy(30, 13);
-                cout<<"4 - Frango com batata doce";
-                gotoxy(30,14);
-                cout<<"5 - 4 Queijos";
-                gotoxy(30, 15);
-                cout<<"6 - Coracao";
-                gotoxy(30, 16);
-                cout<<"7 - Abacaxi";
-                gotoxy(30, 17);
-                cout<<"8 - Portuguesa";
-                gotoxy(30, 18);
-                cout<<"9 - Bacon";
-                gotoxy(30, 19);
-                cout<<"10 - Strogonof de carne";
-                gotoxy(30, 21);
-                cout<<"Sua escolha: ";
-                cin>>sabor;
+                while(cond == 0){
+                    clrscr();
+                    gotoxy(30,8);
+                    cout<<"ESCOLHA A BORDA DA PIZZA: ";
+                    gotoxy(30, 10);
+                    cout<<"1 - Catupiry";
+                    gotoxy(30, 12);
+                    cout<<"2 - Cheddar";
+                    gotoxy(30,14);
+                    cout<<"3 - Chocolate";
+                    gotoxy(30, 16);
+                    cout <<"4 - Normal";
+                    gotoxy(30, 18);
+                    cout<<"Sua escolha: ";
+                    cin>>borda;
+                    if(borda < 1 or borda > 4){
+                        clrscr();
+                        gotoxy(25, 20);
+                        cout << "O BURRO DO KRL SABE LER N";
+                        Sleep(1000);
+                    } else {
+                        cond = 1;
+                    }
+                }
 
+                cond = 0;
+
+                while(cond == 0){
+                    clrscr();
+                    gotoxy(30,8);
+                    cout<<"ESCOLHA O SABOR DA PIZZA: ";
+                    gotoxy(30, 10);
+                    cout<<"1 - Calabresa";
+                    gotoxy(30, 11);
+                    cout<<"2 - Peito de peru";
+                    gotoxy(30, 12);
+                    cout<<"3 - Frango com catupiry";
+                    gotoxy(30, 13);
+                    cout<<"4 - Frango com batata doce";
+                    gotoxy(30,14);
+                    cout<<"5 - 4 Queijos";
+                    gotoxy(30, 15);
+                    cout<<"6 - Coracao";
+                    gotoxy(30, 16);
+                    cout<<"7 - Abacaxi";
+                    gotoxy(30, 17);
+                    cout<<"8 - Portuguesa";
+                    gotoxy(30, 18);
+                    cout<<"9 - Bacon";
+                    gotoxy(30, 19);
+                    cout<<"10 - Strogonof de carne";
+                    gotoxy(30, 21);
+                    cout<<"Sua escolha: ";
+                    cin>>sabor;
+                    if(sabor < 1 or sabor > 10){
+                        clrscr();
+                        gotoxy(25, 20);
+                        cout << "O BURRO DO KRL SABE LER N";
+                        Sleep(1000);
+                    } else {
+                        cond = 1;
+                    }
+                }
+
+                cond = 0;
                 pizza[j].constroi_pizza(sabor,borda,tamanho);
                 pedido[pedido_posi].add_pizza(pizza[j]);
         }
