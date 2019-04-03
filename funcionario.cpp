@@ -31,23 +31,24 @@ void Funcionario::constroi_funcionario(string nome, string endereco,string dataN
 
 void Funcionario :: imprime_funcionario(){
     string funcao;
-    this->imprime_pessoa();
-    cout<<"SALARIO: " << this->salario<<endl;
-    switch(this->funcao){
-        case 00:
-            funcao = "Atendente";
-        break;
-        case 01:
-            funcao = "Pizzaiolo";
-        break;
-        case 02:
-            funcao = "Motoboi";
-        break;
-        case 03:
-            funcao = "Gerente";
-        break;
+    if(this->get_ativo() == true){
+        this->imprime_pessoa();
+        cout<<"SALARIO: " << this->salario<<endl;
+        switch(this->funcao){
+            case 00:
+                funcao = "Atendente";
+            break;
+            case 01:
+                funcao = "Pizzaiolo";
+            break;
+            case 02:
+                funcao = "Motoboi";
+            break;
+            case 03:
+                funcao = "Gerente";
+            break;
+        }
+
+        cout<<"FUNCAO: "<< funcao<<endl;
     }
-
-    cout<<"FUNCAO: "<< funcao<<endl;
-
 }

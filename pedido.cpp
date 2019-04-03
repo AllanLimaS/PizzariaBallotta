@@ -7,7 +7,7 @@
 
 Pedido::Pedido()
 {
-    
+
 }
 
 float Pedido::getPreco()
@@ -121,4 +121,3 @@ void Pedido :: imprime_pedido(){
 
     cout<<"PRECO: " << this->preco <<" Reais "<< endl;
 }
-

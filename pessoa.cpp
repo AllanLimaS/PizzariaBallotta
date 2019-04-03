@@ -45,15 +45,24 @@ void pessoa :: constroi_pessoa(string name, string endereco, string dataNasc, st
     this->setDataNasc(dataNasc);
     this->setCpf(cpf);
     this->setCodigo(codigo);
+    this->ativo = true;
 }
 
 void pessoa :: imprime_pessoa(){
-    cout<<"CPF: " << this->getCpf() <<endl;
-    cout<<"NOME: " << this->getName() <<endl;
-    cout<<"CODIGO: " << this->getCodigo() <<endl;
-    cout<<"NASC: " << this->getDataNasc() <<endl;
-    cout<<"ENDERECO: " << this->getEndereco() <<endl;
+    if(this->ativo == true){
+        cout<<"CPF: " << this->getCpf() <<endl;
+        cout<<"NOME: " << this->getName() <<endl;
+        cout<<"CODIGO: " << this->getCodigo() <<endl;
+        cout<<"NASC: " << this->getDataNasc() <<endl;
+        cout<<"ENDERECO: " << this->getEndereco() <<endl;
+    }
 }
 
+bool pessoa :: get_ativo(){
+    return this->ativo;
+}
 
+bool pessoa :: set_ativo(bool cond){
+    this->ativo = cond;
+}
 

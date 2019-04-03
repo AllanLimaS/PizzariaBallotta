@@ -16,6 +16,7 @@ public:
 
     int getPontuacao();
     void setPontuacao(int value);
+    void remove_cliente();
 };
 
 #endif // CLIENTE_H

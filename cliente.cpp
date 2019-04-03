@@ -1,6 +1,8 @@
 #include "cliente.h"
 #include <iostream>
 
+
+
 using namespace std;
 
 Cliente::Cliente()
@@ -23,8 +25,10 @@ void Cliente :: constroi_cliente(string name, string endereco, string dataNasc, 
 }
 
 void Cliente :: imprime_cliente(){
-    this->imprime_pessoa();
-    cout<< "PONTUCAO: " << this->pontuacao << endl;
+    if(this->get_ativo() == true){
+        this->imprime_pessoa();
+        cout<< "PONTUCAO: " << this->pontuacao << endl;
+    }
 }
 
 

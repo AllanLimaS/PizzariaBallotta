@@ -44,7 +44,7 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
 
     codigo = cliente_posi + 1;
 
-    clrscr();                       // DELETAR DPS Q TIVER PRONTO AS MERDA
+    clrscr();
     gotoxy(30,8);
     cout<<"INSIRA PONTUACAO: ";
     cin>>pontuacao;
@@ -90,54 +90,51 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     codigo = funcionario_posi + 1;
 
     while(cond == 0){
-        clrscr();
-        gotoxy(30,8);
-        cout<<"FUNCAO";
-        gotoxy(30, 10);
-        cout<<"0 - Atendente";
-        gotoxy(30, 11);
-        cout<<"1 - Pizzaiolo";
-        gotoxy(30, 12);
-        cout<<"2 - Motoboi";
-        gotoxy(30, 13);
-        cout<<"3 - Gerente";
-        gotoxy(30, 15);
-        cout<<"Sua escolha: ";
-        cin>>funcao;
+    clrscr();
+    gotoxy(30,8);
+    cout<<"FUNCAO";
+    gotoxy(30, 10);
+    cout<<"0 - Atendente";
+    gotoxy(30, 11);
+    cout<<"1 - Pizzaiolo";
+    gotoxy(30, 12);
+    cout<<"2 - Motoboi";
+    gotoxy(30, 13);
+    cout<<"3 - Gerente";
+    gotoxy(30, 15);
+    cout<<"Sua escolha: ";
+    cin>>funcao;
 
-        if(funcao <0 or funcao > 3){
-            clrscr();
-            gotoxy(30, 20);
-            cout<<"INVALIDO";
-            Sleep(1000);
-        }else{
-            cond = 1;
-            }
+    if(funcao <0 or funcao > 3){
+    clrscr();
+    gotoxy(30, 20);
+    cout<<"INVALIDO";
+    Sleep(1000);
+    }else{
+    cond = 1;
     }
+}
 
-    switch(funcao){
+switch(funcao){
 
-        case 00:
-            salario = 1050.00;
-            break;
-
-        case 01:
-            salario = 1850.50;
-            break;
-
-        case 02:
-            salario = 1000.40;
-            break;
-
-        case 03:
-            salario = 2573.87;
-            break;
-    }
+case 00:
+salario = 1050.00;
+break;
+case 01:
+salario = 1850.50;
+break;
+case 02:
+salario = 1000.40;
+break;
+case 03:
+salario = 2573.87;
+break;
+}
 
 
-    funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
-    funcionario_posi++;
-    return funcionario_posi;
+funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
+funcionario_posi++;
+return funcionario_posi;
 
 }
 
@@ -518,9 +515,19 @@ int ADD_CLIENTES_PADROES(int cliente_posi, Cliente *cliente){
 
 void VER_CLIENTES(Cliente *cliente,int posicao){
     int i = 0;
+    int ativos = 0;
 
     clrscr();
+
+    for(i =0; i < posicao ; i++){
+        if(cliente[i].get_ativo() == true){
+            ativos++;
+        }
+    }
+
+
     cout<<"\nCLIENTES CADASTRADOS: "<< posicao <<endl;
+    cout<<"\nCLIENTES ATIVOS: "<< ativos<<endl;
 
     for(i=0;i < posicao;i++){
         cout<<"\n\n";
@@ -575,18 +582,70 @@ void VER_PEDIDOS(int pedido_posi,Pedido *pedido){
 }
 
 void VER_FUNCIONARIOS(Funcionario *funcionario,int posicao){
-    int i = 0;
+    int i = 0, falsos = 0;
 
     clrscr();
     cout<<"\nFUNCIONARIOS CADASTRADOS: "<< posicao <<endl;
+    for(i=0;i < posicao;i++){
+        if(funcionario[i].get_ativo() == false){
+            falsos++;
+        }
+    }
+    cout<<"\n\nDEMITIDOS: " << falsos << "\n\n";
 
     for(i=0;i < posicao;i++){
         cout<<"\n\n";
         funcionario[i].imprime_funcionario();
     }
+
     system("pause");
 
 }
+
+void remove_cliente(Cliente *cliente, int quantidade){
+    clrscr();
+    cout<<"\nCLIENTES"<<endl;
+    int codigo, i;
+
+
+    for (i=0;i<quantidade;i++){
+        cout<<"\n";
+        if(cliente[i].get_ativo() == true){
+            cout<<"Nome: "<< cliente[i].getName()<< endl << "NUMERO: " << i<< endl;
+        }
+    }
+
+    gotoxy(40,10);
+    cout<<"SELECIONE O NUMERO: ";
+    cin>>codigo;
+
+    cliente[codigo].set_ativo(false);
+
+}
+
+void remove_funcionario(Funcionario *funcionarios, int quantidade){
+    clrscr();
+    cout<<"\nFUNCIONARIOS: "<<endl;
+    int codigo, i;
+
+
+    for (i=0;i<quantidade;i++){
+        cout<<"\n";
+        if(funcionarios[i].get_ativo() == true){
+            cout<< "NUMERO: " << i<< endl;
+            funcionarios[i].imprime_funcionario();
+        }
+    }
+
+    gotoxy(40,10);
+    cout<<"SELECIONE O NUMERO: ";
+    cin>>codigo;
+
+    funcionarios[codigo].set_ativo(false);
+
+}
+
+
 
 void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcionario *funcionario){
     int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0, funcionario_posi = 0;// guarda a posicao do vetor
@@ -612,6 +671,10 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         cout<<"[5]ADICIONA CLIENTES PADROES(PARA TESTES)";
         gotoxy(30,20);
         cout<<"[6]VER PEDIDOS";
+        gotoxy(30,22);
+        cout<<"[7]REMOVE CLIENTE";
+        gotoxy(30,24);
+        cout<<"[8]REMOVE FUNCIONARIO";
 
         switch(getch()){
         case '0':
@@ -662,7 +725,12 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
                 Sleep(1250);
             }
             break;
-
+        case '7':
+            remove_cliente(cliente,cliente_posi);
+            break;
+        case '8':
+            remove_funcionario(funcionario,funcionario_posi);
+            break;
         case 27:
             sair = TRUE;
             break;

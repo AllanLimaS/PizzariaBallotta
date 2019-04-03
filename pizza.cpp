@@ -42,25 +42,25 @@ void Pizza :: imprime_pizza(){
 
     switch (this->sabor) {
     case 1:
-        sabor = "Calabresa";
+        sabor = "calabresa";
         break;
     case 2:
-        sabor = "Peito de piru";
+        sabor = "peito de piru";
         break;
     case 3:
-        sabor= "Frango e catupiry";
+        sabor= "frango e catupiry";
         break;
     case 4:
-        sabor= "Frango com batata doce";
+        sabor= "frango com batata doce";
         break;
     case 5:
         sabor= "4 queijos";
         break;
     case 6:
-        sabor= "Coracao";
+        sabor= "coracao";
         break;
     case 7:
-        sabor= "Abacaxi";
+        sabor= "abacaxi";
         break;
     case 8:
         sabor= "Portuguesa";
@@ -69,7 +69,7 @@ void Pizza :: imprime_pizza(){
         sabor= "Bacon";
         break;
     case 10:
-        sabor= "Strogonof";
+        sabor= "strogonof";
         break;
     }
 
@@ -87,10 +87,10 @@ void Pizza :: imprime_pizza(){
 
     switch(this->borda){
     case 1:
-        borda = "Catupiry";
+        borda = "catupiry";
         break;
     case 2:
-        borda = "Chedar";
+        borda = "chedar";
         break;
     case 3:
         borda = "Chocolate";
