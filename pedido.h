@@ -37,7 +37,7 @@ public:
     void setCodigo(int codigo);
     int getQtnPizzas();
     void setQtnPizzas(int qtnPizzas);
-    void putExtras(Extras extra, int qtnExtras);
+    void addExtras(Extras extra, int qtnExtras);
     void setQtnExtras(int qtnExtras);
     int getQtnExtras();
 };

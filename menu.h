@@ -42,10 +42,8 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
     cout<<"INSIRA CPF: ";
     cin>>cpf;
 
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA COD: ";
-    cin>>codigo;
+    codigo = cliente_posi + 1;
+
 
     clrscr();
     gotoxy(30,8);
@@ -110,22 +108,23 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
 }
 
 int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza, Extras *extra ){
-    int sabor;
-    int borda;
-    int tamanho;
+    int sabor = 0;
+    int borda = 0;
+    int tamanho = 0;
     int i = 0;
     int j = 0;
     int cond = 0; // USUARIO IDIOTA
-    int codigo;
-    int bebida;
-    int adicionais;
-    int pagamento;
-    int entrega;
-    int qntPizzas;
-    int posiExtras;
+    int codigo = 0;
+    int bebida = 0;
+    int adicionais = 0;
+    int pagamento = 0;
+    int entrega = 0;
+    int qntPizzas = 0;
+    int posiExtras = 0;
     Extras extra_temp;
     bool fazerExtras;
-    char ch;
+    char ch ;
+
 
     clrscr();
     cout<<"\nQUANTOS CLIENTES QUE PODEM COMER: "<< posicao <<endl;
@@ -264,7 +263,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 cond = 0;
 
                 extra_temp.constroi_extras(bebida,adicionais);
-                pedido->putExtras(extra_temp,posiExtras);
+                pedido->addExtras(extra_temp,posiExtras);
                 pedido->setQtnExtras(posiExtras);
                 posiExtras ++;
 
@@ -395,6 +394,8 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 }
 
 int ADD_CLIENTES_PADROES(int cliente_posi, Cliente *cliente){
+
+
     cliente[cliente_posi].constroi_cliente("Allan a lima","Mario","19/06/2000","122.975.909-38",1,2424);
     cliente_posi++;
     cliente[cliente_posi].constroi_cliente("GuxXxtavo","BruxXxque","nasceu ontem inocente","777.777.777-77",2,6969);
@@ -537,8 +538,16 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
             break;
 
         case '5':
-            cliente_posi = ADD_CLIENTES_PADROES(cliente_posi,cliente);
-            break;
+            if(cliente_posi == 0){
+                cliente_posi = ADD_CLIENTES_PADROES(cliente_posi,cliente);
+                break;
+            }else{
+                clrscr();
+                gotoxy(25, 20);
+                cout<<"VC JA ADICIONOU OS PUTOS";
+                Sleep(1000);
+                break;
+            }
 
         case '6':
             if (pedido_posi>0){
