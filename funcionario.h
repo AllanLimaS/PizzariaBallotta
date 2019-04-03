@@ -1,3 +1,4 @@
+
 #ifndef FUNCIONARIO_H
 #define FUNCIONARIO_H
 #include "pessoa.h"
@@ -10,18 +11,18 @@ class Funcionario:public pessoa
 private:
 
     float salario;
-    string funcao;
+    int funcao;
 
 public:
 
     Funcionario();
-    void constroi_funcionario(string nome, string endereco,string dataNasc,string cpf,int codigo,float salario,string funcao);
+    void constroi_funcionario(string nome, string endereco,string dataNasc,string cpf,int codigo,float salario,int funcao);
     void imprime_funcionario();
 
     void setSalario(float salario);
     float getSalario();
-    void setFuncao(string funcao);
-    string getFuncao();
+    void setFuncao(int funcao);
+    int getFuncao();
 };
 
 #endif // FUNCIONARIO_H

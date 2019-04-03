@@ -61,8 +61,10 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     string dataNasc;
     string cpf;
     int codigo;
-    string funcao;
+    int funcao;
     float salario;
+
+    int cond = 0; // VARIAVEL DE CONTROLE DE WHILE
 
 
     clrscr();
@@ -85,24 +87,54 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     cout<<"INSIRA CPF: ";
     cin>>cpf;
 
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA COD: ";
-    cin>>codigo;
+    codigo = funcionario_posi + 1;
 
+    while(cond == 0){
     clrscr();
     gotoxy(30,8);
-    cout<<"INSIRA FUNCAO: ";
+    cout<<"FUNCAO";
+    gotoxy(30, 10);
+    cout<<"0 - Atendente";
+    gotoxy(30, 11);
+    cout<<"1 - Pizzaiolo";
+    gotoxy(30, 12);
+    cout<<"2 - Motoboi";
+    gotoxy(30, 13);
+    cout<<"3 - Gerente";
+    gotoxy(30, 15);
+    cout<<"Sua escolha: ";
     cin>>funcao;
 
+    if(funcao <0 or funcao > 3){
     clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA SALARIO: ";
-    cin>>salario;
+    gotoxy(30, 20);
+    cout<<"INVALIDO";
+    Sleep(1000);
+    }else{
+    cond = 1;
+    }
+}
 
-    funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
-    funcionario_posi++;
-    return funcionario_posi;
+switch(funcao){
+
+case 00:
+salario = 1050.00;
+break;
+case 01:
+salario = 1850.50;
+break;
+case 02:
+salario = 1000.40;
+break;
+case 03:
+salario = 2573.87;
+break;
+}
+
+
+funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
+funcionario_posi++;
+return funcionario_posi;
 
 }
 
@@ -267,6 +299,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 pedido[pedido_posi].addExtras(extra_temp);
 
                 clrscr();
+                cout<<pedido[pedido_posi].getQtnExtras()<<endl<<pedido_posi;
                 gotoxy(20, 13);
                 cout<<"ADICIONAR MAIS EXTRAS?  [y]sim  [n]nao";
                 ch = 00;

@@ -1,3 +1,4 @@
+
 #include "funcionario.h"
 #include<iostream>
 
@@ -15,21 +16,38 @@ float Funcionario :: getSalario(){
     return this->salario;
 }
 
-void Funcionario :: setFuncao(string funcao){
+void Funcionario :: setFuncao(int funcao){
     this->funcao = funcao;
 }
-string Funcionario :: getFuncao(){
+int Funcionario :: getFuncao(){
     return this->funcao;
 }
 
-void Funcionario::constroi_funcionario(string nome, string endereco,string dataNasc,string cpf,int codigo,float salario,string funcao){
+void Funcionario::constroi_funcionario(string nome, string endereco,string dataNasc,string cpf,int codigo,float salario,int funcao){
     this->constroi_pessoa(nome,endereco,dataNasc,cpf,codigo);
     this->setSalario(salario);
     this->setFuncao(funcao);
 }
 
 void Funcionario :: imprime_funcionario(){
+    string funcao;
     this->imprime_pessoa();
-    cout<<"SALARIO: " << this->salario<<endl<<"FUNCAO: "<< this->funcao<<endl;
+    cout<<"SALARIO: " << this->salario<<endl;
+    switch(this->funcao){
+        case 00:
+            funcao = "Atendente";
+        break;
+        case 01:
+            funcao = "Pizzaiolo";
+        break;
+        case 02:
+            funcao = "Motoboi";
+        break;
+        case 03:
+            funcao = "Gerente";
+        break;
+    }
+
+    cout<<"FUNCAO: "<< funcao<<endl;
 
 }
