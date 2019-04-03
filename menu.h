@@ -44,7 +44,7 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
 
     codigo = cliente_posi + 1;
 
-    clrscr();
+    clrscr();                       // DELETAR DPS Q TIVER PRONTO AS MERDA
     gotoxy(30,8);
     cout<<"INSIRA PONTUACAO: ";
     cin>>pontuacao;
@@ -90,71 +90,75 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     codigo = funcionario_posi + 1;
 
     while(cond == 0){
-    clrscr();
-    gotoxy(30,8);
-    cout<<"FUNCAO";
-    gotoxy(30, 10);
-    cout<<"0 - Atendente";
-    gotoxy(30, 11);
-    cout<<"1 - Pizzaiolo";
-    gotoxy(30, 12);
-    cout<<"2 - Motoboi";
-    gotoxy(30, 13);
-    cout<<"3 - Gerente";
-    gotoxy(30, 15);
-    cout<<"Sua escolha: ";
-    cin>>funcao;
+        clrscr();
+        gotoxy(30,8);
+        cout<<"FUNCAO";
+        gotoxy(30, 10);
+        cout<<"0 - Atendente";
+        gotoxy(30, 11);
+        cout<<"1 - Pizzaiolo";
+        gotoxy(30, 12);
+        cout<<"2 - Motoboi";
+        gotoxy(30, 13);
+        cout<<"3 - Gerente";
+        gotoxy(30, 15);
+        cout<<"Sua escolha: ";
+        cin>>funcao;
 
-    if(funcao <0 or funcao > 3){
-    clrscr();
-    gotoxy(30, 20);
-    cout<<"INVALIDO";
-    Sleep(1000);
-    }else{
-    cond = 1;
+        if(funcao <0 or funcao > 3){
+            clrscr();
+            gotoxy(30, 20);
+            cout<<"INVALIDO";
+            Sleep(1000);
+        }else{
+            cond = 1;
+            }
     }
-}
 
-switch(funcao){
+    switch(funcao){
 
-case 00:
-salario = 1050.00;
-break;
-case 01:
-salario = 1850.50;
-break;
-case 02:
-salario = 1000.40;
-break;
-case 03:
-salario = 2573.87;
-break;
-}
+        case 00:
+            salario = 1050.00;
+            break;
+
+        case 01:
+            salario = 1850.50;
+            break;
+
+        case 02:
+            salario = 1000.40;
+            break;
+
+        case 03:
+            salario = 2573.87;
+            break;
+    }
 
 
-funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
-funcionario_posi++;
-return funcionario_posi;
+    funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
+    funcionario_posi++;
+    return funcionario_posi;
 
 }
 
 int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza, Extras *extra ){
-    int sabor;
-    int borda;
-    int tamanho;
+    int sabor = 0;
+    int borda = 0;
+    int tamanho = 0;
     int i = 0;
     int j = 0;
     int cond = 0; // USUARIO IDIOTA
-    int codigo;
-    int bebida;
-    int adicionais;
-    int pagamento;
-    int entrega;
-    int qntPizzas;
-    int posiExtras;
+    int codigo = 0;
+    int bebida = 0;
+    int adicionais = 0;
+    int pagamento = 0;
+    int entrega = 0;
+    int qntPizzas = 0;
+    int posiExtras = 0;
     Extras extra_temp;
     bool fazerExtras;
     char ch;
+    float preco = 0.00; // preço do pedido
 
 
     clrscr();
@@ -208,7 +212,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 gotoxy(30,8);
                 cout<<"ESCOLHA ENTREGA: ";
                 gotoxy(30,10);
-                cout<<"1 - motoBOI";
+                cout<<"1 - Motoboy (TAXA DE ENTREGA 10.00)";
                 gotoxy(30,12);
                 cout<<"2 - retirada no balcao";
                 gotoxy(30, 14);
@@ -224,8 +228,12 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 }
             }
 
+            if(entrega == 1){           //PREÇO DA ENTREGA
+                preco = preco + 10.00;
+            }
+
             cond = 0; // REDEFINE COND PARA OS WHILE FICAR BUNITO
-            pedido[pedido_posi].constroi_pedido(cliente[i],pagamento,entrega,codigo);
+            pedido[pedido_posi].constroi_pedido(cliente[i],pagamento,entrega,codigo, preco);
 
             fazerExtras = TRUE;
             pedido->setQtnExtras(0);
@@ -238,15 +246,15 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     gotoxy(30, 10);
                     cout<<"0 - Nada";
                     gotoxy(30, 11);
-                    cout<<"1 - Cebola";
+                    cout<<"1 - Cebola (2.00)";
                     gotoxy(30, 12);
-                    cout<<"2 - Bacon";
+                    cout<<"2 - Bacon(3.00)";
                     gotoxy(30, 13);
                     cout<<"3 - Condimentos Extra";
                     gotoxy(30, 14);
-                    cout<<"4 - Azeitonas";
+                    cout<<"4 - Azeitonas(2.00)";
                     gotoxy(30, 15);
-                    cout<<"5 - Queijo";
+                    cout<<"5 - Queijo(3.00)";
                     gotoxy(30, 17);
                     cout<<"Sua escolha: ";
                     cin>>adicionais;
@@ -260,6 +268,28 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     }
                 }
 
+                switch (adicionais) {
+                case 0:
+                    preco= preco;
+                    break;
+                case 1:
+                    preco= preco + 2.00;
+                    break;
+                case 2:
+                    preco = preco + 3.00;
+                    break;
+                case 3:
+                    preco = preco;
+                    break;
+                case 4:
+                    preco = preco + 2.00;
+                    break;
+                case 5:
+                    preco = preco + 3.00;
+                    break;
+
+                }
+
                 cond = 0;
 
                 while(cond == 0){
@@ -269,15 +299,15 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     gotoxy(30, 10);
                     cout<<"0 - Nada";
                     gotoxy(30, 11);
-                    cout<<"1 - Skol";
+                    cout<<"1 - Skol (4.50)";
                     gotoxy(30, 12);
-                    cout<<"2 - Coca Cola";
+                    cout<<"2 - Coca Cola 2l (10.00)";
                     gotoxy(30, 13);
-                    cout<<"3 - Cachaca";
+                    cout<<"3 - Cachaca (12.50)";
                     gotoxy(30, 14);
-                    cout<<"4 - Vodka";
+                    cout<<"4 - Vodka (20.00)";
                     gotoxy(30, 15);
-                    cout<<"5 - Suquinho";
+                    cout<<"5 - Suquinho (8.50)";
                     gotoxy(30, 17);
                     cout<<"Sua escolha: ";
                     cin>>bebida;
@@ -289,6 +319,28 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     } else {
                         cond = 1;
                     }
+                }
+
+                switch (bebida) {
+                case 0:
+                    preco= preco;
+                    break;
+                case 1:
+                    preco= preco + 4.50;
+                    break;
+                case 2:
+                    preco = preco + 10.00;
+                    break;
+                case 3:
+                    preco = preco + 12.50;
+                    break;
+                case 4:
+                    preco = preco + 20.00;
+                    break;
+                case 5:
+                    preco = preco + 8.50;
+                    break;
+
                 }
 
                 cond = 0;
@@ -328,11 +380,11 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     gotoxy(30,8);
                     cout<<"ESCOLHA O TAMANHO DA PIZZA: ";
                     gotoxy(30,10);
-                    cout<<"1 - Broto";
+                    cout<<"1 - Broto (25.00)";
                     gotoxy(30, 12);
-                    cout<<"2 - Media";
+                    cout<<"2 - Media (35.00)";
                     gotoxy(30,14);
-                    cout<<"3 - Grande";
+                    cout<<"3 - Grande (45.00)";
                     gotoxy(30, 16);
                     cout<<"Sua escolha: ";
                     cin>>tamanho;
@@ -344,6 +396,21 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     } else {
                         cond = 1;
                     }
+                }
+
+                switch (tamanho) {
+
+                case 1:
+                    preco= preco + 25.00;
+                    break;
+                case 2:
+                    preco = preco + 35.00;
+                    break;
+                case 3:
+                    preco = preco + 45.00;
+                    break;
+
+
                 }
 
                 cond = 0;
@@ -361,6 +428,8 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     gotoxy(30, 16);
                     cout <<"4 - Normal";
                     gotoxy(30, 18);
+                    cout<<"Com borda 7.50 de acrescimo";
+                    gotoxy(30, 20);
                     cout<<"Sua escolha: ";
                     cin>>borda;
                     if(borda < 1 or borda > 4){
@@ -371,6 +440,10 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     } else {
                         cond = 1;
                     }
+                }
+
+                if(borda != 4){
+                    preco = preco + 7.50;
                 }
 
                 cond = 0;
@@ -417,6 +490,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 pedido[pedido_posi].add_pizza(pizza[j]);
         }
             clrscr();
+            pedido[pedido_posi].setPreco(preco);
             pedido[pedido_posi].imprime_pedido();
         }
     }

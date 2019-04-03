@@ -4,9 +4,20 @@
 #include "extras.h"
 
 
+
 Pedido::Pedido()
 {
+    
+}
 
+float Pedido::getPreco()
+{
+    return this->preco;
+}
+
+void Pedido::setPreco(float preco)
+{
+    this->preco = preco;
 }
 
 int Pedido::getPagamento()
@@ -60,12 +71,13 @@ void Pedido :: add_pizza(Pizza pizza){
     this->qtnPizzas = this->qtnPizzas + 1;          // poem pizza no vetor de pizza e prepara pra proxima
 }
 
-void Pedido :: constroi_pedido(Cliente cliente, int pagamento, int entrega, int codigo){
+void Pedido :: constroi_pedido(Cliente cliente, int pagamento, int entrega, int codigo, float preco){
     this->qtnPizzas = 0;                            //funcao cria o pedido e diz q ainda n pediu pizza, só iniciou o pedido
     this->cliente = cliente;                        //dps disso a funcao addPizza coloca as pizza no vetor
     this->pagamento = pagamento;
     this->entrega = entrega;
     this->codigo = codigo;
+    this->preco = preco;
 }
 
 
@@ -107,5 +119,6 @@ void Pedido :: imprime_pedido(){
 
     }
 
+    cout<<"PRECO: " << this->preco <<" Reais "<< endl;
 }
 
