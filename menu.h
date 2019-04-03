@@ -184,7 +184,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 gotoxy(30, 14);
                 cout<<"Sua escolha: ";
                 cin>>entrega;
-                if(entrega != 1 && pagamento != 2){
+                if(entrega != 1 && entrega != 2){
                     clrscr();
                     gotoxy(25, 20);
                     cout << "O BURRO DO KRL SABE LER N";
