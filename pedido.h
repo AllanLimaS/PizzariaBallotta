@@ -21,11 +21,12 @@ private:
     int codigo;
     int qtnPizzas;                  //aqui add 1 cada vez q add uma pizza, pra saber a posicao no vetor
     int qtnExtras;
+    float preco;
 
 public:
 
     Pedido();
-    void constroi_pedido(Cliente cliente,int pagamento,int entrega, int codigo);
+    void constroi_pedido(Cliente cliente,int pagamento,int entrega, int codigo, float preco);
     void add_pizza(Pizza pizza);
     void imprime_pedido();
 
@@ -40,6 +41,8 @@ public:
     void addExtras(Extras extra);
     void setQtnExtras(int qtnExtras);
     int getQtnExtras();
+    float getPreco() ;
+    void setPreco(float value);
 };
 
 #endif // PEDIDO_H
