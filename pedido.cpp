@@ -69,8 +69,9 @@ void Pedido :: constroi_pedido(Cliente cliente, int pagamento, int entrega, int 
 }
 
 
-void Pedido :: addExtras(Extras extra, int qtnExtras){
-    this->extras[qtnExtras] = extra;
+void Pedido :: addExtras(Extras extra){
+    this->extras[this->qtnExtras] = extra;
+    this->qtnExtras ++;
 }
 
 
