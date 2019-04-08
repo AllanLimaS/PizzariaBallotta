@@ -1,4 +1,3 @@
-
 #ifndef FUNCIONARIO_H
 #define FUNCIONARIO_H
 #include "pessoa.h"
