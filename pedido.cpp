@@ -119,5 +119,5 @@ void Pedido :: imprime_pedido(){
 
     }
 
-    cout<<"PRECO: " << this->preco <<" Reais "<< endl;
+    cout<<"\nPRECO: " << this->preco <<" Reais "<< endl;
 }

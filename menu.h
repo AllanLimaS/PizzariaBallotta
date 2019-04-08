@@ -43,11 +43,9 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){
     cin>>cpf;
 
     codigo = cliente_posi + 1;
+    pontuacao = 0;
 
-    clrscr();
-    gotoxy(30,8);
-    cout<<"INSIRA PONTUACAO: ";
-    cin>>pontuacao;
+
 
     cliente[cliente_posi].constroi_cliente(name,endereco,dataNasc,cpf,codigo,pontuacao);
     cliente_posi++;
@@ -115,26 +113,26 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){
     }
 }
 
-switch(funcao){
+    switch(funcao){
 
-case 00:
-salario = 1050.00;
-break;
-case 01:
-salario = 1850.50;
-break;
-case 02:
-salario = 1000.40;
-break;
-case 03:
-salario = 2573.87;
-break;
-}
+        case 00:
+            salario = 1050.00;
+        break;
+        case 01:
+            salario = 1850.50;
+        break;
+        case 02:
+            salario = 1000.40;
+        break;
+        case 03:
+            salario = 2573.87;
+        break;
+    }
 
 
-funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
-funcionario_posi++;
-return funcionario_posi;
+    funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
+    funcionario_posi++;
+    return funcionario_posi;
 
 }
 
@@ -144,7 +142,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int tamanho = 0;
     int i = 0;
     int j = 0;
-    int cond = 0; // USUARIO IDIOTA
+    int cond = 0; // Condição caso o usuario  colocque um valori invalido
     int codigo = 0;
     int bebida = 0;
     int adicionais = 0;
@@ -155,7 +153,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     Extras extra_temp;
     bool fazerExtras;
     char ch;
-    float preco = 0.00; // preço do pedido
+    float preco = 0; // preço do pedido
 
 
     clrscr();
@@ -166,18 +164,20 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
         cout<<"Nome: "<< cliente[i].getName()<< endl << "Codigo: " << cliente[i].getCodigo()<< endl;
     }
     gotoxy(30,8);
-    cout<<"DIGITE O CODIGO DO PUTO QUE QUER COMER: ";
+    cout<<"DIGITE O CODIGO DO CLIENTE: ";
     cin>> codigo;
 
     for (i=0;i<posicao;i++){
         if (codigo == cliente[i].getCodigo()){
             clrscr();
             gotoxy(30,10);
-            cout<<"PUTO SELECIONADO"<<endl;
+            cout<<"CLIENTE SELECIONADO"<<endl;
             gotoxy(30, 15);
             cout<<"Nome: "<< cliente[i].getName();
             gotoxy(30, 16);
             cout<<"Codigo: " << cliente[i].getCodigo();
+            cliente[i].setPontuacao(10);
+
 
             Sleep(1000);
 
@@ -195,7 +195,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 if(pagamento != 1 && pagamento != 2){
                     clrscr();
                     gotoxy(25, 40);
-                    cout << "O BURRO DO KRL SABE LER N";
+                    cout << "INVALIDO";
                     Sleep(1000);
                 } else {
                     cond = 1;
@@ -218,7 +218,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 if(entrega != 1 && entrega != 2){
                     clrscr();
                     gotoxy(25, 20);
-                    cout << "O BURRO DO KRL SABE LER N";
+                    cout << "INVALIDO";
                     Sleep(1000);
                 } else {
                     cond = 1;
@@ -258,7 +258,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     if(adicionais <0 or adicionais >5){
                         clrscr();
                         gotoxy(25, 20);
-                        cout << "O BURRO DO KRL SABE LER N";
+                        cout << "INVALIDO";
                         Sleep(1000);
                     } else {
                         cond = 1;
@@ -311,7 +311,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     if(bebida <0 or bebida >5){
                         clrscr();
                         gotoxy(25, 20);
-                        cout << "O BURRO DO KRL SABE LER N";
+                        cout << "INVALIDO";
                         Sleep(1000);
                     } else {
                         cond = 1;
@@ -388,7 +388,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     if(tamanho < 1 or tamanho > 3){
                         clrscr();
                         gotoxy(25, 20);
-                        cout << "O BURRO DO KRL SABE LER N";
+                        cout << "INVALIDO";
                         Sleep(1000);
                     } else {
                         cond = 1;
@@ -432,7 +432,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     if(borda < 1 or borda > 4){
                         clrscr();
                         gotoxy(25, 20);
-                        cout << "O BURRO DO KRL SABE LER N";
+                        cout << "INVALIDO";
                         Sleep(1000);
                     } else {
                         cond = 1;
@@ -475,7 +475,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     if(sabor < 1 or sabor > 10){
                         clrscr();
                         gotoxy(25, 20);
-                        cout << "O BURRO DO KRL SABE LER N";
+                        cout << "INVALIDO";
                         Sleep(1000);
                     } else {
                         cond = 1;
@@ -487,9 +487,13 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 pedido[pedido_posi].add_pizza(pizza[j]);
         }
             clrscr();
+            if (cliente[i].getPontuacao() == 100){
+                preco = 0;
+            }
             pedido[pedido_posi].setPreco(preco);
             pedido[pedido_posi].imprime_pedido();
         }
+
     }
     pedido_posi++;
     system("pause");
@@ -497,16 +501,16 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 }
 
 int ADD_CLIENTES_PADROES(int cliente_posi, Cliente *cliente){
-    cliente[cliente_posi].constroi_cliente("Allan a lima","Mario","19/06/2000","122.975.909-38",1,2424);
+    cliente[cliente_posi].constroi_cliente("Allan a lima","Mario","19/06/2000","122.975.909-38",1,0);
     cliente_posi++;
-    cliente[cliente_posi].constroi_cliente("GuxXxtavo","BruxXxque","nasceu ontem inocente","777.777.777-77",2,6969);
+    cliente[cliente_posi].constroi_cliente("GuxXxtavo","BruxXxque","13/13/13","777.777.777-77",2,0);
     cliente_posi++;
-    cliente[cliente_posi].constroi_cliente("Koguto","bC","200AC","987.654.321-00",3,0);
+    cliente[cliente_posi].constroi_cliente("Koguto","bC","200AC","987.654.321-00",3,80);
     cliente_posi++;
 
     clrscr();
     gotoxy(30,8);
-    cout<<"COTOCOS ADICIONADOS COM SUCESSO"<<endl<<endl;
+    cout<<"CLIENTES ADICIONADOS COM SUCESSO"<<endl<<endl;
     Sleep(1500);
 
     return cliente_posi;
@@ -549,13 +553,13 @@ void VER_PEDIDOS(int pedido_posi,Pedido *pedido){
         cout<<endl<<"--------------------------PEDIDO "<<i + 1<<"--------------------------"<<endl;
         pedido[i].imprime_pedido();
         cout<<endl<<"--------------------------PEDIDO "<<i + 1<<"--------------------------"<<endl;
-        cout<<"[a]pedido anterior"<<endl<<"[d] proximo pedido"<<endl<<"[esc] para sai"<<endl;
+        cout<<"[a]PEDIDO ANTERIOR"<<endl<<"[d]PROXIMO PEDIDO"<<endl<<"[esc]SAIR"<<endl;
 
         switch(getch()){
 
         case 'a':
             if (i==0){
-                cout<<endl<<"nao ha pedido anterior a este";
+                cout<<endl<<"NAO HA PEDIDOS ANTERIORES";
                 Sleep(1000);
             }else{
                 i--;
@@ -564,7 +568,7 @@ void VER_PEDIDOS(int pedido_posi,Pedido *pedido){
 
         case 'd':
             if(i==pedido_posi-1){
-                cout<<endl<<"nao ha pedido apos este";
+                cout<<endl<<"NAO A PEDIDO DEPOIS DESSE";
                 Sleep(1000);
             }else{
                 i++;
@@ -710,7 +714,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
             }else{
                 clrscr();
                 gotoxy(25, 20);
-                cout<<"VC JA ADICIONOU OS PUTOS";
+                cout<<"VC JA ADICIONOU OS CLIENTES";
                 Sleep(1000);
               }
             break;
