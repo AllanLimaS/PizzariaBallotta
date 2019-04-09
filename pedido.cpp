@@ -118,6 +118,9 @@ void Pedido :: imprime_pedido(){
         this->pizza[i].imprime_pizza();
 
     }
+    if(this->preco < 0){
+        this->preco = 0;
+    }
 
     cout<<"\nPRECO: " << this->preco <<" Reais "<< endl;
 }
