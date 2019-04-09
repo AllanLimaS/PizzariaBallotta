@@ -10,9 +10,7 @@ using namespace std;
 
 class Pedido
 {
-
 private:
-
     Cliente cliente;
     Pizza pizza[100];
     Extras extras[100];
@@ -24,8 +22,8 @@ private:
     float preco;
 
 public:
-
     Pedido();
+    ~Pedido();
     void constroi_pedido(Cliente cliente,int pagamento,int entrega, int codigo, float preco);
     void add_pizza(Pizza pizza);
     void imprime_pedido();

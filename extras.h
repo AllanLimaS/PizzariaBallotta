@@ -4,13 +4,12 @@
 class Extras
 {
 private:
-
     int bebida;
     int adicionais;
 
 public:
-
     Extras();
+    ~Extras();
     void constroi_extras(int bebida, int adicionais);
     void imprime_extras();
 

@@ -3,11 +3,12 @@
 #include "pizza.h"
 #include "extras.h"
 
-
-
 Pedido::Pedido()
 {
+}
 
+Pedido::~Pedido()
+{
 }
 
 float Pedido::getPreco()
@@ -51,11 +52,9 @@ int Pedido :: getQtnExtras(){
     return this->qtnExtras;
 }
 
-
 void Pedido :: setQtnExtras(int qtnExtras){
     this->qtnExtras = qtnExtras;
 }
-
 
 int Pedido::getQtnPizzas()
 {
@@ -80,17 +79,14 @@ void Pedido :: constroi_pedido(Cliente cliente, int pagamento, int entrega, int 
     this->preco = preco;
 }
 
-
 void Pedido :: addExtras(Extras extra){
     this->extras[this->qtnExtras] = extra;
     this->qtnExtras ++;
 }
 
-
 void Pedido :: imprime_pedido(){
     int i = 0;
     int j = 0;
-
 
      cout<<"CLIENTE: " << this->cliente.getName()<<endl;
      cout<<"\n";
@@ -117,6 +113,9 @@ void Pedido :: imprime_pedido(){
         cout<<endl<<"PIZZA NUMERO:"<<i+1<<endl;
         this->pizza[i].imprime_pizza();
 
+    }
+    if(this->preco < 0){
+        this->preco = 0;
     }
 
     cout<<"\nPRECO: " << this->preco <<" Reais "<< endl;

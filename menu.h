@@ -48,8 +48,8 @@ int ADD_CLIENTE(int cliente_posi, Cliente *cliente){    //VOID DE CRIAÇÃO DE C
 
 
     cliente[cliente_posi].constroi_cliente(name,endereco,dataNasc,cpf,codigo,pontuacao);
-    cliente_posi++;
-    return cliente_posi;
+    cliente_posi++;         //AUMENTA UMA POSICAO NO VETOR PARA O PROXIMO CLIENTE
+    return cliente_posi;    //RETORNA A POSICAO DO VETOR
 
 }
 
@@ -63,7 +63,6 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){ // CRIAÇÃ
     float salario;
 
     int cond = 0; // VARIAVEL DE CONTROLE DE WHILE
-
 
     clrscr();
     gotoxy(30,8);
@@ -110,20 +109,22 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){ // CRIAÇÃ
             Sleep(1000);
         }else{
             cond = 1;
+        }
     }
-}
 
     switch(funcao){
-
         case 00:
             salario = 1050.00;
         break;
+
         case 01:
             salario = 1850.50;
         break;
+
         case 02:
             salario = 1000.40;
         break;
+
         case 03:
             salario = 2573.87;
         break;
@@ -131,8 +132,8 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){ // CRIAÇÃ
 
 
     funcionario[funcionario_posi].constroi_funcionario(name,endereco,dataNasc,cpf,codigo,salario,funcao);
-    funcionario_posi++;
-    return funcionario_posi;
+    funcionario_posi++;         //AUMENTA APOSICAO NO VETOR
+    return funcionario_posi;    //RETORNA A POSICAO
 
 }
 
@@ -196,7 +197,8 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             cout<<"Nome: "<< cliente[i].getName();
             gotoxy(30, 16);
             cout<<"Codigo: " << cliente[i].getCodigo();
-            cliente[i].setPontuacao(10);
+            int pontucao = cliente[i].getPontuacao() + 10;
+            cliente[i].setPontuacao(pontucao);
 
 
             Sleep(1000);
@@ -493,7 +495,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     cin>>sabor;
                     if(sabor < 1 or sabor > 10){
                         clrscr();
-                        gotoxy(25, 20);
+                        gotoxy(30, 20);
                         cout << "INVALIDO";
                         Sleep(1000);
                     } else {
@@ -508,6 +510,23 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             clrscr();
             if (cliente[i].getPontuacao() == 100){ // CASO A PONTUAÇÃO DO CLIENTE SEJA 100 ELE GANHA DESCONTO DE 30
                 preco = preco - 30;
+
+                cliente[i].setPontuacao(0);
+                for(int y =0; i<60; i++){
+                    int rnd, rnd2, rnd3;
+                    rnd = rand()%80;
+                    rnd2 = rand()%40;
+                    rnd3 = rand()%15;
+                    textcolor(rnd3, 0);
+                    gotoxy(rnd, rnd2);
+                    cout<<"PROMOCAO";
+                    Sleep(20);
+                }
+                textcolor(2, 0);
+                clrscr();
+
+
+
             }
             pedido[pedido_posi].setPreco(preco); // SET DE PREÇO
             pedido[pedido_posi].imprime_pedido(); // IMPRIME O PEDIDO
@@ -541,13 +560,11 @@ void VER_CLIENTES(Cliente *cliente,int posicao){ // VER CLIENTES
     int ativos = 0;
 
     clrscr();
-
     for(i =0; i < posicao ; i++){
         if(cliente[i].get_ativo() == true){ // FOR PARA TIRAR OS CLIENTES QUE FORAM RETIRADOS
             ativos++;
         }
     }
-
 
     cout<<"\nCLIENTES CADASTRADOS: "<< posicao <<endl; // TDS OS CLIENTES ADICIONADOS
     cout<<"\nCLIENTES ATIVOS: "<< ativos<<endl; // CLIENTES ATIVOS
@@ -557,7 +574,6 @@ void VER_CLIENTES(Cliente *cliente,int posicao){ // VER CLIENTES
         cliente[i].imprime_cliente(); // IMPRIME CLIENTES
     }
     system("pause");
-
 }
 
 void VER_PEDIDOS(int pedido_posi,Pedido *pedido){ // VER PEDIDOS
@@ -620,16 +636,13 @@ void VER_FUNCIONARIOS(Funcionario *funcionario,int posicao){ // VER FUNCIONARIOS
         cout<<"\n\n";
         funcionario[i].imprime_funcionario(); // IMPRIME FUNCIONARIOS
     }
-
     system("pause");
-
 }
 
-void remove_cliente(Cliente *cliente, int quantidade){ // REMOVER CLIENTES
+void REMOVE_CLIENTE(Cliente *cliente, int quantidade){ // REMOVER CLIENTES
     clrscr();
     cout<<"\nCLIENTES"<<endl;
     int codigo, i;
-
 
     for (i=0;i<quantidade;i++){ // IMPRIME CLIENTES
         cout<<"\n";
@@ -643,10 +656,9 @@ void remove_cliente(Cliente *cliente, int quantidade){ // REMOVER CLIENTES
     cin>>codigo;
 
     cliente[codigo].set_ativo(false); // RETIRA O ATIVO DO CLIENTE
-
 }
 
-void remove_funcionario(Funcionario *funcionarios, int quantidade){ // REMOVE FUNCIONARIOS
+void REMOVE_FUNCIONARIO(Funcionario *funcionarios, int quantidade){ // REMOVE FUNCIONARIOS
     clrscr();
     cout<<"\nFUNCIONARIOS: "<<endl;
     int codigo, i;
@@ -668,15 +680,18 @@ void remove_funcionario(Funcionario *funcionarios, int quantidade){ // REMOVE FU
 
 }
 
-
-
 void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcionario *funcionario){
+
     int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0, funcionario_posi = 0;// guarda a posicao do vetor
-    int ativos = 0; // VARIAVEIS UTILIZADAS PARAVER SE TEM CLIENTE
+
+    int ativos = 0; // VARIAVEIS UTILIZADAS PARA VER SE TEM CLIENTE
     int i = 0;      //
+
     boolean sair = FALSE;
+
     clrscr();
-    system("mode con: cols=80 lines=40");
+    system("mode con: cols=80 lines=40");   //DEFINE O TAMANHO DA JANELA
+    textcolor(2, 0);
 
     while(sair == FALSE){ // PRINT DO INICIO DO MENU
         clrscr();
@@ -693,25 +708,20 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
         gotoxy(30, 16);
         cout<<"[4]VER FUNCIONARIOS";
         gotoxy(30, 18);
-        cout<<"[5]ADICIONA CLIENTES PADROES(PARA TESTES)";
+        cout<<"[5]VER PEDIDOS";
         gotoxy(30,20);
-        cout<<"[6]VER PEDIDOS";
+        cout<<"[6]REMOVE CLIENTE";
         gotoxy(30,22);
-        cout<<"[7]REMOVE CLIENTE";
+        cout<<"[7]REMOVE FUNCIONARIO";
         gotoxy(30,24);
-        cout<<"[8]REMOVE FUNCIONARIO";
+        cout<<"[8]ADICIONA CLIENTES PADROES(PARA TESTES)";
 
         switch(getch()){
         case '0':
             cliente_posi = ADD_CLIENTE(cliente_posi,cliente); // CHAMADA DO ADD CLIENTE
             break;
 
-        case '2':
-            VER_CLIENTES(cliente,cliente_posi); // CHAMADA DE VER CLIENTE
-            break;
-
         case '1':
-
             for(i = 0; i < cliente_posi ; i++){
                 if(cliente[i].get_ativo() == true){ // VERIFICA SE EXISTE CLIENTE ATIVO
                     ativos++;
@@ -727,6 +737,10 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
             }
             break;
 
+        case '2':
+            VER_CLIENTES(cliente,cliente_posi); // CHAMADA DE VER CLIENTE
+            break;
+
         case '3':
             funcionario_posi = ADD_FUNCIONARIO(funcionario_posi, funcionario); // ADD FUNCIONARIOS
             break;
@@ -736,6 +750,25 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
             break;
 
         case '5':
+            if (pedido_posi>0){
+                VER_PEDIDOS(pedido_posi,pedido); // VER PEDIDOS
+            }else{
+                clrscr();
+                gotoxy(30,8);
+                cout<<"PRIMEIRO FAZ UM PEDIDO NEH"; // CASO N HAJA PEDIDOS
+                Sleep(1250);
+            }
+            break;
+
+        case '6':
+            REMOVE_CLIENTE(cliente,cliente_posi); // REMOVE CLIENTE
+            break;
+
+        case '7':
+            REMOVE_FUNCIONARIO(funcionario,funcionario_posi); // REMOVE FUNCIONARIO
+            break;
+
+        case '8':
             if(cliente_posi == 0){
                 cliente_posi = ADD_CLIENTES_PADROES(cliente_posi,cliente); // ADICIONA CLIENTES PARA TESTE
             }else{
@@ -746,30 +779,10 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
               }
             break;
 
-        case '6':
-            if (pedido_posi>0){
-                VER_PEDIDOS(pedido_posi,pedido); // VER PEDIDOS
-            }else{
-                clrscr();
-                gotoxy(30,8);
-                cout<<"PRIMEIRO FAZ UM PEDIDO NEH"; // CASO N HAJA PEDIDOS
-                Sleep(1250);
-            }
-            break;
-        case '7':
-            remove_cliente(cliente,cliente_posi); // REMOVE CLIENTE
-            break;
-        case '8':
-            remove_funcionario(funcionario,funcionario_posi); // REMOVE FUNCIONARIO
-            break;
         case 27:
             sair = TRUE; // SAIDA
             break;
         }
-
-
     }
-
 }
-
 #endif // MENU_H

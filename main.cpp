@@ -1,4 +1,3 @@
-
 #include "pessoa.h"
 #include "cliente.h"
 #include "funcionario.h"
@@ -10,7 +9,6 @@
 
 int main()
 {
-
     Cliente cliente[100];
     Pizza pizza[100];
     Extras extra[100];

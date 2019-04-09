@@ -8,7 +8,6 @@ class pessoa
 {
 
 private:
-
     string name;
     string endereco;
     string dataNasc;
@@ -17,7 +16,6 @@ private:
     bool ativo;
 
 public:
-
     void constroi_pessoa(string name, string endereco, string dataNasc, string cpf, int codigo);
     void imprime_pessoa();
     bool get_ativo();

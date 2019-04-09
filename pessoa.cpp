@@ -38,7 +38,6 @@ int pessoa::getCodigo(){
     return this->codigo;
 }
 
-
 void pessoa :: constroi_pessoa(string name, string endereco, string dataNasc, string cpf, int codigo){
     this->setName(name);
     this->setEndereco(endereco);
