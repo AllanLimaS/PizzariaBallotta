@@ -5,7 +5,10 @@ using namespace std;
 
 Pizza::Pizza()
 {
+}
 
+Pizza::~Pizza()
+{
 }
 
 void Pizza :: setBorda(int borda){

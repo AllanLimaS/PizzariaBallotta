@@ -1,11 +1,13 @@
 #include "cliente.h"
 #include <iostream>
 
-
-
 using namespace std;
 
 Cliente::Cliente()
+{
+}
+
+Cliente::~Cliente()
 {
 }
 
@@ -15,10 +17,7 @@ int Cliente::getPontuacao()
 }
 void Cliente::setPontuacao(int pontuacao)
 {
-    this->pontuacao = this->pontuacao + pontuacao;
-    if(this->pontuacao == 110){
-        this->pontuacao = 10;
-    }
+    this->pontuacao = pontuacao;
 }
 
 void Cliente :: constroi_cliente(string name, string endereco, string dataNasc, string cpf, int codigo, int pontuacao){

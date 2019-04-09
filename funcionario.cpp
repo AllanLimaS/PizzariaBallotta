@@ -1,4 +1,3 @@
-
 #include "funcionario.h"
 #include<iostream>
 
@@ -6,7 +5,10 @@ using namespace std;
 
 Funcionario::Funcionario()
 {
+}
 
+Funcionario::~Funcionario()
+{
 }
 
 void Funcionario :: setSalario(float salario){

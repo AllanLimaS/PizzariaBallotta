@@ -5,7 +5,10 @@ using namespace std;
 
 Extras::Extras()
 {
+}
 
+Extras::~Extras()
+{
 }
 
 void Extras :: setBebida(int bebida){
