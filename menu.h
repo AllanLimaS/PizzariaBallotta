@@ -196,7 +196,8 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             cout<<"Nome: "<< cliente[i].getName();
             gotoxy(30, 16);
             cout<<"Codigo: " << cliente[i].getCodigo();
-            cliente[i].setPontuacao(10);
+            int pontucao = cliente[i].getPontuacao() + 10;
+            cliente[i].setPontuacao(pontucao);
 
 
             Sleep(1000);
@@ -493,7 +494,7 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                     cin>>sabor;
                     if(sabor < 1 or sabor > 10){
                         clrscr();
-                        gotoxy(25, 20);
+                        gotoxy(30, 20);
                         cout << "INVALIDO";
                         Sleep(1000);
                     } else {
@@ -508,6 +509,23 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             clrscr();
             if (cliente[i].getPontuacao() == 100){ // CASO A PONTUAÇÃO DO CLIENTE SEJA 100 ELE GANHA DESCONTO DE 30
                 preco = preco - 30;
+
+                cliente[i].setPontuacao(0);
+                for(int y =0; i<60; i++){
+                    int rnd, rnd2, rnd3;
+                    rnd = rand()%80;
+                    rnd2 = rand()%40;
+                    rnd3 = rand()%15;
+                    textcolor(rnd3, 0);
+                    gotoxy(rnd, rnd2);
+                    cout<<"PROMOCAO";
+                    Sleep(20);
+                }
+                textcolor(2, 0);
+                clrscr();
+
+
+
             }
             pedido[pedido_posi].setPreco(preco); // SET DE PREÇO
             pedido[pedido_posi].imprime_pedido(); // IMPRIME O PEDIDO
@@ -677,6 +695,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
     boolean sair = FALSE;
     clrscr();
     system("mode con: cols=80 lines=40");
+    textcolor(2, 0);
 
     while(sair == FALSE){ // PRINT DO INICIO DO MENU
         clrscr();
