@@ -59,8 +59,8 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){ // CRIAÇÃ
     string dataNasc;
     string cpf;
     int codigo;
-    int funcao;
-    float salario;
+    int funcao = 0;
+    float salario = 0.0;
 
     int cond = 0; // VARIAVEL DE CONTROLE DE WHILE
 
@@ -137,7 +137,7 @@ int ADD_FUNCIONARIO(int funcionario_posi, Funcionario *funcionario){ // CRIAÇÃ
 
 }
 
-int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza, Extras *extra ){ // ADICIONAR PEDIDOS
+int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pizza *pizza){ // ADICIONAR PEDIDOS
 
     int sabor = 0;
     int borda = 0;
@@ -151,7 +151,6 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
     int pagamento = 0;
     int entrega = 0;
     int qntPizzas = 0;
-    int posiExtras = 0;
     Extras extra_temp;
     bool fazerExtras;
     char ch;
@@ -175,14 +174,14 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
 
         for (i=0;i<posicao;i++){
             if (codigo == cliente[i].getCodigo()){  // COMPARAÇÃO PARA VER SE EXISTE
-                    if (cliente[i].get_ativo() == FALSE){ // caso ele tenha sido retido cliente n existe
-                        clrscr();
-                        gotoxy(30,10);
-                        cout<< "CLIENTE N EXISTE";
-                        Sleep(1000);
-                    }else {
-                        excluido = 1; // caso ele exista sai do while
-                    }
+                if (cliente[i].get_ativo() == FALSE){ // caso ele tenha sido retido cliente n existe
+                    clrscr();
+                    gotoxy(30,10);
+                    cout<< "CLIENTE N EXISTE";
+                    Sleep(1000);
+                }else {
+                    excluido = 1; // caso ele exista sai do while
+                }
             }
         }
     }
@@ -199,7 +198,6 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
             cout<<"Codigo: " << cliente[i].getCodigo();
             int pontucao = cliente[i].getPontuacao() + 10;
             cliente[i].setPontuacao(pontucao);
-
 
             Sleep(1000);
 
@@ -291,22 +289,26 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 case 0:
                     preco= preco;
                     break;
+
                 case 1:
                     preco= preco + 2.00;
                     break;
+
                 case 2:
                     preco = preco + 3.00;
                     break;
+
                 case 3:
                     preco = preco;
                     break;
+
                 case 4:
                     preco = preco + 2.00;
                     break;
+
                 case 5:
                     preco = preco + 3.00;
                     break;
-
                 }
 
                 cond = 0;
@@ -344,22 +346,26 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 case 0:
                     preco = preco;
                     break;
+
                 case 1:
                     preco = preco + 4.50;
                     break;
+
                 case 2:
                     preco = preco + 10.00;
                     break;
+
                 case 3:
                     preco = preco + 12.50;
                     break;
+
                 case 4:
                     preco = preco + 20.00;
                     break;
+
                 case 5:
                     preco = preco + 8.50;
                     break;
-
                 }
 
                 cond = 0;
@@ -374,18 +380,17 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 cout<<"ADICIONAR MAIS EXTRAS?  [y]sim  [n]nao";
                 ch = 00;
                 ch = getch();
+
                 switch (ch) {
                 case 'y':
 
                     break;
+
                 case 'n':
                     fazerExtras = FALSE;
                     break;
                 }
-
-
             }
-
 
             clrscr();
             gotoxy(25,10);
@@ -421,14 +426,14 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 case 1:
                     preco= preco + 25.00;
                     break;
+
                 case 2:
                     preco = preco + 35.00;
                     break;
+
                 case 3:
                     preco = preco + 45.00;
                     break;
-
-
                 }
 
                 cond = 0;
@@ -506,13 +511,14 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 cond = 0;
                 pizza[j].constroi_pizza(sabor,borda,tamanho); // CONSTROI A PIZZA
                 pedido[pedido_posi].add_pizza(pizza[j]); // ADD PIZZA CONSTRUIDA AO VETOR
-        }
+            }
+
             clrscr();
             if (cliente[i].getPontuacao() == 100){ // CASO A PONTUAÇÃO DO CLIENTE SEJA 100 ELE GANHA DESCONTO DE 30
                 preco = preco - 30;
 
                 cliente[i].setPontuacao(0);
-                for(int y =0; i<60; i++){
+                for(; i<60; i++){
                     int rnd, rnd2, rnd3;
                     rnd = rand()%80;
                     rnd2 = rand()%40;
@@ -524,17 +530,14 @@ int ADD_PEDIDO(int pedido_posi,int posicao, Pedido *pedido, Cliente *cliente, Pi
                 }
                 textcolor(2, 0);
                 clrscr();
-
-
-
             }
             pedido[pedido_posi].setPreco(preco); // SET DE PREÇO
             pedido[pedido_posi].imprime_pedido(); // IMPRIME O PEDIDO
         }
-
     }
     pedido_posi++;
     system("pause");
+
     return pedido_posi;
 }
 
@@ -682,7 +685,7 @@ void REMOVE_FUNCIONARIO(Funcionario *funcionarios, int quantidade){ // REMOVE FU
 
 void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcionario *funcionario){
 
-    int pizza_posi = 0, cliente_posi = 0, pedido_posi = 0, funcionario_posi = 0;// guarda a posicao do vetor
+    int cliente_posi = 0, pedido_posi = 0, funcionario_posi = 0;// guarda a posicao do vetor
 
     int ativos = 0; // VARIAVEIS UTILIZADAS PARA VER SE TEM CLIENTE
     int i = 0;      //
@@ -695,26 +698,41 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
 
     while(sair == FALSE){ // PRINT DO INICIO DO MENU
         clrscr();
+
         gotoxy(30,5);
-        cout<<"PIZZARIA BALLOTA'S";
+        textcolor(10,0);cout<<"PI";textcolor(15,0);cout<<"ZZ";textcolor(12,0);cout<<"AR";textcolor(10,0);cout<<"IA";textcolor(15,0);cout<<" BA";textcolor(12,0);cout<<"LL";textcolor(10,0);cout<<"OT";textcolor(15,0);cout<<"A'";textcolor(12,0);cout<<"S";
+
+        //cout<<"PIZZARIA BALLOTA'S";
+
         gotoxy(30,8);
+        textcolor(2,0);
         cout<<"[0]ADD CLIENTE";
         gotoxy(30,10);
+        textcolor(7,0);
         cout<<"[1]ADD PEDIDO";
         gotoxy(30,12);
+        textcolor(4,0);
         cout<<"[2]VER CLIENTES";
         gotoxy(30, 14);
+        textcolor(2,0);
         cout<<"[3]ADCIONAR FUNCIONARIO";
         gotoxy(30, 16);
+        textcolor(7,0);
         cout<<"[4]VER FUNCIONARIOS";
         gotoxy(30, 18);
+        textcolor(4,0);
         cout<<"[5]VER PEDIDOS";
         gotoxy(30,20);
+        textcolor(2,0);
         cout<<"[6]REMOVE CLIENTE";
         gotoxy(30,22);
+        textcolor(7,0);
         cout<<"[7]REMOVE FUNCIONARIO";
         gotoxy(30,24);
+        textcolor(4,0);
         cout<<"[8]ADICIONA CLIENTES PADROES(PARA TESTES)";
+
+        textcolor(7,0);
 
         switch(getch()){
         case '0':
@@ -728,7 +746,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
                 }
             }
             if (cliente_posi > 0 && ativos > 0){
-                pedido_posi = ADD_PEDIDO(pedido_posi,cliente_posi,pedido,cliente,pizza,extra); // VERIFICA SE A CLIENTE E ATIVOS CASO SIM CHMA ADD PEDIDO
+                pedido_posi = ADD_PEDIDO(pedido_posi,cliente_posi,pedido,cliente,pizza); // VERIFICA SE A CLIENTE E ATIVOS CASO SIM CHMA ADD PEDIDO
             }else{
                 clrscr();
                 gotoxy(30,8);
