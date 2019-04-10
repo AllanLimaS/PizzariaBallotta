@@ -740,6 +740,7 @@ void MENU(Cliente *cliente, Pizza *pizza, Extras *extra, Pedido *pedido, Funcion
             break;
 
         case '1':
+            ativos = 0;
             for(i = 0; i < cliente_posi ; i++){
                 if(cliente[i].get_ativo() == true){ // VERIFICA SE EXISTE CLIENTE ATIVO
                     ativos++;
